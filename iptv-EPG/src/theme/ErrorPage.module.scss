@@ -1,0 +1,38 @@
+@use './variables';
+@use './theme';
+@use './responsive';
+
+.errorPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.box {
+  max-width: 500px;
+  padding: 12px;
+}
+
+.title {
+  margin-bottom: 24px;
+  color: variables.$white;
+  font-weight: var(--body-font-weight-bold);
+  font-size: 34px;
+}
+
+.main {
+  color: variables.$white;
+
+  > h6 {
+    margin-bottom: 16px;
+    font-weight: var(--body-font-weight-bold);
+    font-size: 20px;
+  }
+}
+
+@include responsive.mobile-only() {
+  .title {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,365 @@
+export const channels = [{
+    'uuid': 'c8bd518c-f5cf-3803-8d1f-e15acba243a1',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv003_mobile.png'
+}, {
+    'uuid': '0899794c-4bf7-3a29-aa22-4708ca7c1361',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv001_mobile.png'
+}, {
+    'uuid': '01a0fa1b-92fd-3976-adeb-0ca0d96344f5',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv002_mobile.png'
+}, {
+    'uuid': 'bbffb76f-21c4-37c0-9a5b-75286d2734ee',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live007_mobile.png'
+}, {
+    'uuid': '44c5c303-c54f-3828-9a2d-52715104d790',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv040_mobile.png'
+}, {
+    'uuid': '1cd973ed-673c-350c-8171-9a037d518467',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv080_mobile.png'
+}, {
+    'uuid': 'a2f0b08e-2783-3e47-864a-4b5475cd855c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv041_mobile.png'
+}, {
+    'uuid': '6cef8e24-ff22-3c6c-92e7-4076f235301c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live207_mobile.png'
+}, {
+    'uuid': 'd27df0d8-ffea-309e-be3a-d5b5d655dcbc',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv043_mobile.png'
+}, {
+    'uuid': 'fe5201f2-4abd-3106-be3a-bae62e682773',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv039_mobile.png'
+}, {
+    'uuid': '7b5497a1-8e63-3218-97ef-71dac44ec7e1',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv064_mobile.png'
+}, {
+    'uuid': '7e4b0eb0-b4a4-3170-9f17-37beaef94903',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live086_mobile.png'
+}, {
+    'uuid': '8707c3e0-b5f1-37bc-a7b1-06d4366861c1',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv070_mobile.png'
+}, {
+    'uuid': 'adc10459-d61c-3e45-9d22-c9746c13bd9c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv046_mobile.png'
+}, {
+    'uuid': 'bfd953f3-4ddc-39a5-b701-e1628c8c1985',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv047_mobile.png'
+}, {
+    'uuid': '7f28bf34-e5bb-33a1-8e90-8059a9830429',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live050_mobile.png'
+}, {
+    'uuid': '4579ed4e-5927-33f3-aaf0-1243bbce4978',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live033_mobile.png'
+}, {
+    'uuid': '76b7abd1-0a8a-331a-992e-cdb4ac48cba9',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv079_mobile.png'
+}, {
+    'uuid': '4b7bd834-65e7-3715-832c-e2f3d82c1218',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live112_mobile.png'
+}, {
+    'uuid': '7d48f690-6586-31a6-8dc5-1df8b6cbb271',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live030_mobile.png'
+}, {
+    'uuid': '7e5e2731-7a99-3770-8d83-ff3454c72a55',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv018_mobile.png'
+}, {
+    'uuid': 'd0589980-841b-3171-acad-6e6660771259',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn20_mobile.png'
+}, {
+    'uuid': '2ffb285c-9e4b-3108-a2de-2ac12d61e3ad',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live032_mobile.png'
+}, {
+    'uuid': 'b4df7489-2635-396e-86f5-ccbffd50db83',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live105_mobile.png'
+}, {
+    'uuid': '092b270d-c25b-3f8c-b49c-c350fe016eba',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv044_mobile.png'
+}, {
+    'uuid': '74e7157d-07b9-3966-98df-d8755074d13b',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv057_mobile.png'
+}, {
+    'uuid': '272afd1b-ea1f-3034-b2d1-904ad121470f',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-ftv15_mobile.png'
+}, {
+    'uuid': 'ed2312da-a10c-3ee4-84e5-161f377bb632',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live107_mobile.png'
+}, {
+    'uuid': 'bd27a6eb-0b83-3918-8cda-268f4e075db9',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live205_mobile.png'
+}, {
+    'uuid': '299e9d96-8d39-3eb5-ab00-61057763cd3c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live047_mobile.png'
+}, {
+    'uuid': '34673a0f-d432-3510-8cb6-531551ffa74d',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv075_mobile.png'
+}, {
+    'uuid': '7d7ebba2-66a8-3cf6-b5b0-7a499a1371ed',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live114_mobile.png'
+}, {
+    'uuid': 'a49b15ca-f9bd-3084-a24f-3a699512b22b',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv052_mobile.png'
+}, {
+    'uuid': '237de632-c204-31d0-ab83-6d9ad3b3ee9c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-ftv13_mobile.png'
+}, {
+    'uuid': 'e525a9bb-608f-3b1c-a6e1-cad530af2e48',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live089_mobile.png'
+}, {
+    'uuid': 'd9dafe98-23cf-38cb-b35d-086710ede5d3',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live072_mobile.png'
+}, {
+    'uuid': '5933c9da-c853-380b-8926-3061a7e4d928',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live019_mobile.png'
+}, {
+    'uuid': '72a84261-b67a-3616-a489-1f33b08c0c71',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv074_mobile.png'
+}, {
+    'uuid': '1b247f47-c62a-3b9c-aca4-eb1c2d70853e',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv009_mobile.png'
+}, {
+    'uuid': 'b43d3679-5bcf-3874-88b7-b82a7544a87d',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn14_mobile.png'
+}, {
+    'uuid': 'd0e218e7-0557-3a81-94c4-6b2e889f4ad8',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live060_mobile.png'
+}, {
+    'uuid': 'fb82d366-c666-3c0b-8a21-6ba8c5a2f20f',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv073_mobile.png'
+}, {
+    'uuid': 'a2dfc420-c69c-3f38-8677-d25088a5c245',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live046_mobile.png'
+}, {
+    'uuid': '41b2f294-7aad-33d9-8c60-b7632668f618',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv004_mobile.png'
+}, {
+    'uuid': '7da8a634-6550-3313-800f-0bcdd663f21a',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv006_mobile.png'
+}, {
+    'uuid': '0a4300e4-6f80-3ca5-aec4-3ac3881ca8cd',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv062_mobile.png'
+}, {
+    'uuid': 'f024e2c7-51b0-3246-a039-4992811165b0',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv063_mobile.png'
+}, {
+    'uuid': 'a2c2bdf8-068d-317b-a78d-f301c33445cb',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv054_mobile.png'
+}, {
+    'uuid': 'da266455-8ee6-397a-af50-c6ce6158d69c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv065_mobile.png'
+}, {
+    'uuid': '218424bf-685d-3feb-8ff7-29d0ba3cc4fa',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live076_mobile.png'
+}, {
+    'uuid': '8ec98fd6-a250-3e87-b0f6-cfbc1ad702d5',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv068_mobile.png'
+}, {
+    'uuid': 'c35e7fc0-c4c2-3d83-8426-dce664e8cedf',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv016_mobile.png'
+}, {
+    'uuid': '42f8627c-0a07-348b-bd40-785f66166b04',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live029_mobile.png'
+}, {
+    'uuid': '6297ef3f-548e-3a30-a611-45d70a9ee08d',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live031_mobile.png'
+}, {
+    'uuid': 'f6e78b97-d368-30e4-94b2-780f5e66e136',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv082_mobile.png'
+}, {
+    'uuid': '74294416-c59a-3201-8052-d7f6872fdf35',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live025_mobile.png'
+}, {
+    'uuid': '69afb214-8061-35dd-85a6-2777a313070f',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv083_mobile.png'
+}, {
+    'uuid': 'a43f2990-a697-3b80-b4b8-134553f36027',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv059_mobile.png'
+}, {
+    'uuid': '03765e55-c93c-3566-9843-b43ed850bc2c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn05_mobile.png'
+}, {
+    'uuid': '1abd1267-517b-3a95-8b15-2a253aafaf61',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn07_mobile.png'
+}, {
+    'uuid': '026e82fa-6649-307a-bea9-92c398b26027',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn10_mobile.png'
+}, {
+    'uuid': '95279789-476f-32c1-b913-6412ce0ae329',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn09_mobile.png'
+}, {
+    'uuid': 'e5dcc66c-293b-3818-9959-e1964c8466c3',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv077_mobile.png'
+}, {
+    'uuid': '114df836-b9ea-3f9f-a927-f957ab3418e4',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv101_mobile.png'
+}, {
+    'uuid': '4947265b-98cd-342e-a39c-3dcd1e7a62b7',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv014_mobile.png'
+}, {
+    'uuid': 'd6442147-6ea6-3ef7-944a-b755ffb2d596',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live201_mobile.png'
+}, {
+    'uuid': '34f25898-5004-38c8-bfd8-ac3d7ef4c8a1',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv053_mobile.png'
+}, {
+    'uuid': '42ffe2b6-e770-3728-b2b5-2892f7abe17b',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live109_mobile.png'
+}, {
+    'uuid': '9f9a3f5e-4ac6-3e94-9a60-92d1d14958f0',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live110_mobile.png'
+}, {
+    'uuid': 'ce5a978a-5802-314c-8156-938ddbe80c4b',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-ftv07_mobile.png'
+}, {
+    'uuid': 'fe72ea0c-a7b5-3e50-9479-d2d699c92658',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live012_mobile.png'
+}, {
+    'uuid': 'f0f45146-43b5-361f-b036-0a82ef5b5253',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn17_mobile.png'
+}, {
+    'uuid': 'b156d50c-5fcb-3289-ac40-d16900d94f28',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live206_mobile.png'
+}, {
+    'uuid': '0e16ec19-2236-3ea5-97d3-b80b76fcca8c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live208_mobile.png'
+}, {
+    'uuid': 'e3417e33-4147-3366-9515-96877d6a53de',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live026_mobile.png'
+}, {
+    'uuid': '839a359f-d2e6-3a23-9d00-9af1fac06aa7',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live028_mobile.png'
+}, {
+    'uuid': 'd4285f9b-5fd6-3792-adaf-9c82c209ac11',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live088_mobile.png'
+}, {
+    'uuid': '06e833b7-3dcb-3040-b66e-040ab1db720d',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live120_mobile.png'
+}, {
+    'uuid': 'cf13f819-1b9f-3ac2-bcf4-56e3db2367fa',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live121_mobile.png'
+}, {
+    'uuid': '91f0adbe-89d7-3062-8108-ade61b34951c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live122_mobile.png'
+}, {
+    'uuid': '76790da3-4ba6-38d7-b345-40cb16dd2e96',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live123_mobile.png'
+}, {
+    'uuid': '740efc02-043f-31d1-8bb6-e60eaa84fb64',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv042_mobile.png'
+}, {
+    'uuid': '1ac8e158-27b2-3a37-9c9c-de66d9e0b186',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-ftv09_mobile.png'
+}, {
+    'uuid': '24a3904e-a01b-35ea-b732-73c37dd8bc9f',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn18_mobile.png'
+}, {
+    'uuid': '5717457a-f8d4-3b22-94c6-6907d0633a17',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live620_mobile.png'
+}, {
+    'uuid': 'e383e8b2-cd5a-31ce-8910-538392356141',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn11_mobile.png'
+}, {
+    'uuid': '59bf932e-e655-35ba-ab1a-f0526e9cb368',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv034_mobile.png'
+}, {
+    'uuid': '42d27e3a-0962-3b74-bb62-1287df6f771e',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv058_mobile.png'
+}, {
+    'uuid': 'e26c8c94-6733-3a98-ae10-33e2d5f68232',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv045_mobile.png'
+}, {
+    'uuid': 'd8163e48-192e-34d8-b1a4-0d7c710950e7',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live027_mobile.png'
+}, {
+    'uuid': 'd19bd31d-3395-3231-ad2b-d6f52bfb17ce',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv013_mobile.png'
+}, {
+    'uuid': '7c4e2a68-a161-3eed-be97-fbe2bb6b734d',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live023_mobile.png'
+}, {
+    'uuid': '66dc52d2-d446-314f-8516-a699fa78720d',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live144_mobile.png'
+}, {
+    'uuid': 'c409dd19-61da-3768-93f6-fdbe6daa8775',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live138_mobile.png'
+}, {
+    'uuid': '5c3a950e-2509-3fca-a9d6-c2299a51ad27',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv049_mobile.png'
+}, {
+    'uuid': '689661f4-1e60-3215-9151-c952c364df50',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv055_mobile.png'
+}, {
+    'uuid': '8ce1c6c3-37c5-3e36-9388-3621b0682693',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv061_mobile.png'
+}, {
+    'uuid': '010955ee-bd6a-3948-9955-af4358d0907c',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-longturn03_mobile.png'
+}, {
+    'uuid': '7559419d-bcfa-369d-ab35-61979caa9436',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv011_mobile.png'
+}, {
+    'uuid': 'acd3d2cf-caea-3839-85d1-8402225f6c39',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv017_mobile.png'
+}, {
+    'uuid': '62911e2f-104d-3900-898a-f6ec08593b99',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live069_mobile.png'
+}, {
+    'uuid': 'f831d294-4c6b-3b3c-8ca9-789420909917',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live155_mobile.png'
+}, {
+    'uuid': '5f308de7-5adf-3fa7-a86b-c5deb9d711d8',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv076_mobile.png'
+}, {
+    'uuid': '11ca69fb-5a05-37bb-b440-cd1147724488',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live157_mobile.png'
+}, {
+    'uuid': '82235d19-6e7e-32de-bf71-7c61d2a8a055',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-ftv17_mobile.png'
+}, {
+    'uuid': 'd61c8639-afd6-3a62-af21-d1acd25fda8b',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-ftv16_mobile.png'
+}, {
+    'uuid': 'b719854a-f549-356a-9cfc-8d60520e9a66',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live106_mobile.png'
+}, {
+    'uuid': '71bc6da5-f18f-3d39-be66-97886aa48949',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live008_mobile.png'
+}, {
+    'uuid': 'dd57498b-79e3-3c21-9dfe-3326484e7314',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-ftv10_mobile.png'
+}, {
+    'uuid': 'e57c8359-b3bc-3751-9470-42015864c133',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_litv-ftv03_mobile.png'
+}, {
+    'uuid': '1b7dcb2f-b88b-38cd-a5cf-c1ac4ad318bd',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live130_mobile.png'
+}, {
+    'uuid': 'eed5fdf8-eb81-3110-a82d-079e0376f5fa',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live071_mobile.png'
+}, {
+    'uuid': '7eaa60c8-44ef-3b48-b8b0-82b14db1c261',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live203_mobile.png'
+}, {
+    'uuid': '9ecbfabc-7e46-32cc-9054-aced516af741',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live204_mobile.png'
+}, {
+    'uuid': '84cda1a4-1166-398f-8f2c-4f66c0754cdc',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv084_mobile.png'
+}, {
+    'uuid': '55710608-e3f4-3743-9943-9b71de20f9ce',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-4gtv085_mobile.png'
+}, {
+    'uuid': 'c3eb5141-b4e2-36f6-872b-f79d3bb880e4',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live021_mobile.png'
+}, {
+    'uuid': 'cc38371f-c19f-3660-a01c-871f86345a67',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live022_mobile.png'
+}, {
+    'uuid': 'a9695c72-2881-36c3-a23b-cfe06ced2324',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live024_mobile.png'
+}, {
+    'uuid': 'ddbfc6f0-b63a-34ca-baa1-4c2485d69d11',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live005_mobile.png'
+}, {
+    'uuid': '234f2dad-5e8e-3e1b-9303-941e442ed03a',
+    'logo': 'https://agit.ai/239144498/owner/raw/branch/master/img/MOBILE/logo_4gtv_4gtv-live006_mobile.png'
+}];
+
