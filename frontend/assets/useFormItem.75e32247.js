@@ -1,0 +1,1 @@
+import{P as a,Q as e,am as s,k as u,b9 as l,$ as t,t as v,u as n,aj as o}from"./vendor.84d2d683.js";function r(r,d="value",i="change",m){const c=o(),f=null==c?void 0:c.emit,g=a({value:r[d]}),j=e(g);s((()=>{g.value=r[d]}));return[u({get:()=>g.value,set(a){l(a,j.value)||(g.value=a,t((()=>{null==f||f(i,a,...v(n(m))||[])})))}}),a=>{g.value=a},j]}export{r as u};
