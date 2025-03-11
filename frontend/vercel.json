@@ -1,0 +1,6 @@
+{
+    "rewrites": [
+        { "source": "/api/:path(.*)", "destination": "https://media.naihe.me/api/:path" },
+        { "source": "/ws/:path(.*)", "destination": "wss://media.naihe.me/ws/:path" }
+    ]
+}
