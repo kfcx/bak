@@ -1,0 +1,15 @@
+import json
+import requests
+
+session = requests.session()
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0",
+    "Cookie": ''
+}
+url = 'https://www.paperask.com/xcx/api/v2/activity-check-record/check-in?tk=xxx&promote=0'
+data = session.get(url, headers=headers)
+print(data.content.decode('utf-8'))
+url = 'https://www.paperask.com/xcx/api/v2/activity-check-record/check-in?tk=xxx&promote=0'
+data = session.get(url, headers=headers)
+https://www.paperask.com/xcx/api/v2/activity-prize/lottery-prize?tk=xxx&promote=0
+print(data.content.decode('utf-8'))
