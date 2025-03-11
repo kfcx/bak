@@ -1,0 +1,40 @@
+import hashlib
+import json
+
+import requests
+import time
+
+
+class Login(object):
+    def __init__(self, user, pwd):
+        self.user = user
+        self.pwd = hashlib.md5(pwd.encode()).hexdigest().upper()  # MD5加密
+        self.session = requests.session()
+
+    def login_(self):
+        url = "https://account.xiaomi.com/pass/serviceLoginAuth2"
+        data = {
+            "_json": True,
+            "callback": "https://api.m.mi.com/v1/passport/callback",
+            "sid": "eshopmobile",
+            "qs": "%3Fsid%3Deshopmobile%26_json%3Dtrue",
+            "_sign": "=",
+            "user": self.user,
+            "hash": self.pwd,
+            "cc": "+86",
+        }
+        headers = {
+            "Cookie": "deviceId=7CA1XDE18B1BCSZD; sdkVersion=4.1.8",
+            "User-Agent": "APP/com.xiaomi.mishop APPV/5.2.120 iosPassportSDK/4.1.8 iOS/14.3"
+        }
+        res = self.session.post(url=url, params=data, headers=headers)
+        _ = json.loads(res.text[11:])
+        res = self.session.get(url=_['location'], headers=headers)
+        if res.json()['desc'] == "成功":
+            print("登陆成功")
+            return res.headers.get("serviceToken")
+
+
+if __name__ == '__main__':
+    login = Login("x", "x")  # 输入 账号 密码
+    print(login.login_())
