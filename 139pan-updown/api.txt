@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  alist:
+    # 5244
+    network_mode: host
+    image: xhofe/alist:latest
+    container_name: alist
+    restart: always
+    devices:
+      - "/dev/dri:/dev/dri"
+    volumes:
+      - /etc/alist:/opt/alist/data
+      - /onedrive:/onedrive
+  autoheal:
+    # 自动掉线重启
+    image: willfarrell/autoheal
+    container_name: autoheal
+    restart: always
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  watchtower:
+    # 自动更新images
+    image: containrrr/watchtower
+    container_name: watchtower
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: alist watchtower autoheal --cleanup --schedule "0 0 3 * * *"
+    restart: always

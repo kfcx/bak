@@ -1,0 +1,15 @@
+requests~=2.28.1
+certifi
+cryptography
+pyOpenSSL
+python-dotenv
+itsdangerous
+typing-extensions
+loguru
+aiodns
+aiohttp
+Brotli
+aiofiles
+requests_toolbelt
+nest_asyncio
+aiohttp_jinja2

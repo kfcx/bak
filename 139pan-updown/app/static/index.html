@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>在线</title>
+	<link href="style.css" rel="stylesheet">
+	<script src="script.js" defer></script>
+</head>
+
+<body>
+<main>
+	<div id="drop-area" class="main-area">
+		<form method="post" enctype="multipart/form-data" id="file-choice-form">
+			<p>
+				Drop files here or
+				<label for="file-input-field" class="clickable-text">
+					choose from file system
+				</label>
+			</p>
+			<div class="nodisplay">
+				<input type="file" name="file" id="file-input-field" multiple>
+			</div>
+		</form>
+	</div>
+	<div id="files-area" class="main-area nodisplay">
+		<div id="active-uploads-section" class="nodisplay">
+			<h2 class="files-section-title">In progress</h2>
+			<div id="active-uploads-file-list"></div>
+		</div>
+		<div id="finished-uploads-section" class="nodisplay">
+			<h2 class="files-section-title">Finished</h2>
+			<div id="finished-uploads-file-list"></div>
+		</div>
+	</div>
+	<div class="nodisplay" id="templates">
+		<div class="file-container">
+			<div class="file-name"></div>
+			<div class="status-indicator">
+				<div class="success-indicator nodisplay">Done</div>
+				<div class="error-indicator nodisplay">Failed</div>
+				<div class="progress-indicator">
+					<span class="progress-value">0.0</span>%
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+
+</html>

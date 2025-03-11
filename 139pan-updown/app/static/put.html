@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>离线</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+<main>
+    <div id="drop-area" class="main-area">
+        <form action="/offline" method="post" id="file-choice-form" target="nm_iframe" accept-charset="utf-8"
+      enctype="application/x-www-form-urlencoded">
+            <div class="">
+                <input name="type" type="text" >
+            </div>
+            <div class="">
+                <textarea name="data" rows="15" cols="95%" maxlength="1048576" placeholder="输入格式：&#10;name1@url1&#10;name2@url2" autofocus required></textarea>
+            </div>
+            <div class="">
+                <input type="submit" id="file-input-field" value="提交">
+            </div>
+        </form>
+        <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
+    </div>
+</main>
+</body>
+
+</html>
