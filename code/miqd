@@ -1,0 +1,404 @@
+import json
+import random
+import re
+import threading
+import time
+import requests
+import hashlib
+
+import schedule
+from fake_useragent import UserAgent
+from pymongo import MongoClient
+from loguru import logger
+from pprint import pprint
+
+requests.packages.urllib3.disable_warnings()
+
+
+class Login(object):
+    """
+    小米账号登录
+    """
+    def login_(self, user, pwd):
+        session = requests.session()
+        pwd = hashlib.md5(pwd.encode()).hexdigest().upper()
+
+        url = "https://account.xiaomi.com/pass/serviceLoginAuth2"
+        data = {
+            "_json": True,
+            "callback": "https://sts.api.io.mi.com/sts",
+            "sid": "xiaomiio",
+            "qs": "%3Fsid%3Deshopmobile%26_json%3Dtrue",
+            "_sign": "=",
+            "user": user,
+            "hash": pwd,
+            "cc": "+86",
+        }
+        headers = {
+            "Cookie": "deviceId=; sdkVersion=4.1.8",
+            "User-Agent": "APP/com.xiaomi.mishop APPV/5.2.120 iosPassportSDK/4.1.8 iOS/14.3"
+        }
+        res = session.post(url=url, params=data, headers=headers, verify=False)
+        _ = json.loads(res.text[11:])
+        if _["result"] != "error":
+            res = session.get(url=_['location'], headers=headers, verify=False)
+            if "ok" in res.text:
+                url1 = "https://account.xiaomi.com/pass/serviceLogin?_json=true&sid=miotstore"
+                res1 = session.get(url=url1)
+                _ = json.loads(res1.text[11:])
+                session.get(url=_['location'], verify=False)
+                return requests.utils.dict_from_cookiejar(session.cookies)
+        return "login失败"
+
+
+class MongoDB(object):
+    def __init__(self, url, db, collection):
+        """
+        初始化MongoDB数据库和表的信息并连接数据库
+        :param url: 连接名
+        :param db: 数据库名
+        :param collection: 表名
+        """
+        # client = motor_asyncio.AsyncIOMotorClient(url)  # 异步
+        client = MongoClient(url)  # 同步
+        self.db = client[db]  # 数据库
+        self.collection = self.db[collection]  # 表
+
+        if db not in client.list_database_names():
+            logger.warning("数据库不存在！")
+        if collection not in self.db.list_collection_names():
+            logger.warning("表不存在！")
+
+    def __str__(self):
+        """数据库基本信息"""
+        db = self.db._Database__name
+        collection = self.collection._Collection__name
+        num = self.collection.count_documents({})
+        return "数据库{} 表{} 共{}条数据".format(db, collection, num)
+
+    def __len__(self):
+        """表的数据条数"""
+        return self.collection.count_documents({})
+
+    def count(self):
+        """表的数据条数"""
+        return len(self)
+
+    def insert(self, *args, table=None, **kwargs):
+        """插入多条数据
+
+        :param args: 多条数据，可以是dict、dict的list或dict的tuple
+        :param kwargs: 单条数据，如name=XerCis, gender=male
+        :return: 添加的数据在库中的_id
+        """
+        if table:
+            collection = self.db[table]
+        else:
+            collection = self.collection
+        documents = []
+        for i in args:
+            if isinstance(i, dict):
+                documents.append(i)
+            else:
+                documents += [x for x in i]
+        if kwargs:
+            documents.append(kwargs)
+        return collection.insert_many(documents)
+
+    def delete(self, *args, table=None, **kwargs):
+        """删除一批数据
+
+        :param args: 字典类型，如{"gender": "male"}
+        :param kwargs: 直接指定，如gender="male"
+        :return: 已删除条数
+        """
+        # TODO(XerCis) 增加正则表达式
+        if table:
+            collection = self.db[table]
+        else:
+            collection = self.collection
+        list(map(kwargs.update, args))
+        result = collection.delete_many(kwargs)
+        return result.deleted_count
+
+    def update(self, old, new, table=None):
+        """更新一批数据
+
+        :param args: dict类型的固定查询条件如{"author":"XerCis"}，循环查询条件一般为_id列表如[{'_id': ObjectId('1')}, {'_id': ObjectId('2')}]
+        :param kwargs: 要修改的值，如country="China", age=22
+        :return: 修改成功的条数
+        """
+        if table:
+            collection = self.db[table]
+        else:
+            collection = self.collection
+        value = {"$set": new}
+        result = collection.update_one(old, value)
+        return result.modified_count
+
+    def update_many(self, *args, table=None, **kwargs):
+        """更新一批数据
+
+        :param args: dict类型的固定查询条件如{"author":"XerCis"}，循环查询条件一般为_id列表如[{'_id': ObjectId('1')}, {'_id': ObjectId('2')}]
+        :param kwargs: 要修改的值，如country="China", age=22
+        :return: 修改成功的条数
+        """
+        if table:
+            collection = self.db[table]
+        else:
+            collection = self.collection
+        value = {"$set": kwargs}
+        query = {}
+        n = 0
+        list(map(query.update, list(filter(lambda x: isinstance(x, dict), args))))  # 固定查询条件
+        for i in args:
+            if not isinstance(i, dict):
+                for id in i:
+                    query.update(id)
+                    result = collection.update_one(query, value)
+                    n += result.modified_count
+        result = collection.update_many(query, value)
+        return n + result.modified_count
+
+    def find(self, *args, table=None, **kwargs):
+        """保留原接口"""
+        if table:
+            collection = self.db[table]
+        else:
+            collection = self.collection
+        return collection.find(*args, **kwargs)
+
+    def find_all(self, show_id=False, table=None):
+        """所有查询结果
+
+        :param show_id: 是否显示_id，默认不显示
+        :return:所有查询结果
+        """
+        if table:
+            collection = self.db[table]
+        else:
+            collection = self.collection
+
+        if not show_id:
+            return [i for i in collection.find({}, {"_id": 0})]
+        else:
+            return [i for i in collection.find({}, table)]
+
+    def find_col(self, *args, table=None, **kwargs):
+        """查找某一列数据
+
+        :param key: 某些字段，如"name","age"
+        :param value: 某些字段匹配，如gender="male"
+        :return:
+        """
+        if table:
+            collection = self.db[table]
+        else:
+            collection = self.collection
+        if args:
+            key_dict = {"_id": 0}  # 不显示_id
+            key_dict.update({i: 1 for i in args})
+            return list(filter(lambda i: i != {}, [i for i in collection.find(kwargs, key_dict, table)]))
+        else:
+            return []
+
+    def find_one(self, arg, _id=0, table=None):
+        _ = {}
+        _[arg] = 0
+        _['_id'] = _id
+        for i in self.find(None, _, table=table):
+            if i and i['user'] == arg:
+                return i
+        return {}
+
+
+class configure(Login, MongoDB):
+    def __init__(self, url, db, collection):
+        super(Login, self).__init__(url, db, collection)  # 连接数据库
+        super(MongoDB, self).__init__()  # 连接数据库
+        self.users = self.dict_merge(self.find_all(table="user"))
+        self.cookies = self.dict_merge(self.find_all(table="cookie2"))
+        self.session = requests.session()
+        self.headers = {
+            "User-Agent": "MiShop/5.2.120 CFNetwork/1209 Darwin/20.2.0",
+            "mishop-client-id": "180100031055",
+        }
+        self.print = False
+
+    def get_conf(self, debug=False):
+        url = "https://m.xiaomiyoupin.com/api/auth/login/isloggedin"
+        with self.session.get(url=url, headers=self.headers, verify=False) as res:
+            data = res.json()['data'] == 200
+            if debug:
+                pprint(data)
+            return {"is_login": data}
+
+    def login_check(self):
+        self.cookies = self.dict_merge(self.find_all(table="cookie2"))
+        for data in self.cookies:
+            self.set_cookie(self.cookies[data])
+            self.headers['User-Agent'] = UserAgent().random
+            _ = self.get_conf(True)
+            if not _['is_login']:
+                logger.warning("账号失效")
+                cookie = self.login_(data, self.users[data])
+                self.set_cookie(cookie)
+                _ = self.get_conf()
+                self.cookies[data] = cookie
+                if self.find_one(data, table="cookie2").get("cookie"):
+                    self.update(self.find_one(data, table="cookie2"),
+                                {"user": data, "cookie": cookie, "time": time.time()}, table="cookie2")
+                else:
+                    self.insert({"user": data, "cookie": cookie, "time": time.time()}, table="cookie2")
+        logger.info("登录皆正常")
+
+    def set_cookie(self, cookie):
+        self.session.cookies = requests.utils.cookiejar_from_dict(cookie, cookiejar=None,
+                                                                  overwrite=True)
+
+    def draw_(self, i, act_id):
+        url = "https://api.m.mi.com/v1/retailmember/do_task"
+        data = f"nonce_mishop_client=x&task_id={i['id']}&timestamp_mishop_client={int(time.time() * 1000)}&act_id={act_id}"
+        self.session.post(url=url, headers=self.headers, params=data, verify=False)
+        logger.info(f"{i['title']}+{i['score']}", i['id'], act_id)
+
+    def _do_task(self, data):
+        act_id = data['planet_info']['act_id']
+        score = data['planet_info']['score']
+        if data['planet_pending_info']:
+            self.draw_(data['planet_pending_info']["planet_pending_task"][0], act_id)
+        for i in data['planet_task_info']['planet_task_list']:
+            self.draw_(i, act_id)
+            self.draw_(i, act_id)
+
+    def planet_home(self):
+        url = "https://api.m.mi.com/v1/retailmember/planet_home"
+        data = f"has_opened_push=0&timestamp_mishop_client={int(time.time() * 1000)}"
+        res = self.session.post(url=url, headers=self.headers, params=data, verify=False)
+        return res.json()['data']
+
+    def sign_attend(self):
+        url = "https://api.m.mi.com/v1/scoresign/sign_attend"
+        data = f"nonce_mishop_client=x&timestamp_mishop_client={int(time.time() * 1000)}"
+        res = self.session.post(url=url, headers=self.headers, params=data, verify=False)
+        logger.info(res.text)
+
+    def on_time(self, buyt):
+        local_time = lambda: time.time()
+        t = f'{time.strftime("%Y-%m-%d", time.localtime())} {buyt}'.split('.')
+        f = float("." + t[1])
+        buy_time_ms = time.mktime(time.strptime(t[0], '%Y-%m-%d %H:%M:%S')) + f
+        while True:
+            if (buy_time_ms - local_time()) >= 60:  # 60s
+                time.sleep(50)
+            else:  # max 10s
+                if (buy_time_ms - local_time()) >= 2:
+                    time.sleep(1)
+                else:  # max 2s
+                    while True:
+                        if (buy_time_ms - local_time()) <= 0:
+                            return True
+
+    def qiand(self, cookie):
+        url = "https://api.m.mi.com/v1/scoresign/sign_check_in"
+        data = f"nonce_mishop_client=x&timestamp_mishop_client={int(time.time() * 1000)}"
+        res = requests.post(url=url, headers=self.headers, params=data, cookies=cookie, verify=False)
+        if "成功" in res.json()['desc'] or res.json()['data'] == "success":
+            logger.info(res.json())
+            return True
+        else:
+            logger.warning(res.json())
+
+    def sign_check_in(self):
+        self.login_check()
+        a = "04:59:59"
+        # self.on_time(f"{a}.999500")
+        t = [threading.Thread(target=self.qiand, args=(self.cookies[user],)) for user in tuple(self.users) * 2]
+        tuple(i.start() for i in t)
+        tuple(i.join() for i in t)
+
+    def run_card(self):
+        for data in self.cookies:
+            self.set_cookie(self.cookies[data])
+            logger.info(f"账号 {data} 开始运行")
+
+            # 米金
+            try:
+                logger.info("开始执行每日任务")
+                tasks = self.planet_home()
+                self._do_task(tasks)
+            except Exception as e:
+                logger.error(e)
+
+            # 早起打卡报名
+            logger.info("开始执行每日报名打卡")
+            self.sign_attend()
+
+    @staticmethod
+    def dict_merge(dd):
+        _ = {}
+        for i in dd:
+            if i.get("pwd"):
+                _[i['user']] = i['pwd']
+            elif i.get("cookie"):
+                _[i['user']] = i['cookie']
+        return _
+
+    def bbb(self, taskId, taskType, times):
+        url = "https://m.xiaomiyoupin.com/mtop/act/lego/task/do"
+        data = [{}, "6201cf86e03dd800013cf66f", taskId]
+        res = self.session.post(url=url, headers=self.headers, data=json.dumps(data))
+        if res.json()['success']:
+            taskToken = res.json()['data']['taskToken']
+            url = "https://m.xiaomiyoupin.com/mtop/act/lego/task/done"
+            data = [{}, taskToken, taskType]
+            res = self.session.post(url=url, headers=self.headers, data=json.dumps(data))
+            logger.success(res.text)
+        else:
+            pass
+
+    def aaa(self):
+        for data in self.cookies:
+            self.set_cookie(self.cookies[data])
+            logger.info(f"账号 {data} 开始运行")
+
+            url = "https://m.xiaomiyoupin.com/mtop/act/lottery/getTaskInfo"
+            data = [{}, {"actId": "6201cf86e03dd800013cf66f"}]
+            res = self.session.post(url=url, headers=self.headers, json=data)
+            if "每日签到" in res.text:
+                data = res.json()['data']
+                for i in data:
+                    logger.info(f"开始执行【{i['taskDesc']}】")
+                    taskId = i['taskId']
+                    self.bbb(taskId, i['taskType'], 20)
+                    if i['taskType'] == 10 and i['totalNumber'] != i['finishedNumber']:
+                        for j in range((i['totalNumber'] - i['finishedNumber'])):
+                            self.bbb(taskId, i['taskType'], 0.1)
+                    elif i['taskType'] == 3 and i['totalNumber'] != i['finishedNumber']:
+                        for j in range((i['totalNumber'] - i['finishedNumber'])):
+                            self.bbb(taskId, i['taskType'], 30)
+                    elif i['taskType'] == 8 and i['totalNumber'] != i['finishedNumber']:
+                        for j in range((i['totalNumber'] - i['finishedNumber'])):
+                            self.bbb(taskId, i['taskType'], 20)
+
+
+def time_task(conf):
+    conf.login_check()
+    conf.aaa()
+    logger.info("程序运行完成")
+
+if __name__ == '__main__':
+    host = 'x'
+    port = 36373
+    user1 = "x"
+    pwd = "x"
+    url = f"mongodb://{user1}:{pwd}@{host}:{port}/"
+    db = "mi"
+    collection = "cookie"
+    conf = configure(url, db, collection)
+    time_task(conf)
+    schedule.every().day.at("07:00").do(time_task, conf)
+    logger.info("已开始任务")
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
