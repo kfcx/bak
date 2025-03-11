@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://media.naihe.me/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ws/*"
+  to = "wss://media.naihe.me/ws/:splat"
+  status = 200
+  force = true
