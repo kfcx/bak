@@ -1,0 +1,1 @@
+System.register(["./index-legacy.5f587d09.js","./vendor-legacy.d8193a32.js"],(function(e){"use strict";var n,t,r,u;return{setters:[function(e){n=e._},function(e){t=e.A,r=e.B,u=e.D}],execute:function(){var a=t({name:"FrameBlank"});e("default",n(a,[["render",function(e,n,t,a,c,i){return r(),u("div")}]]))}}}));
