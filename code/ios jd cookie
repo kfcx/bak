@@ -1,0 +1,86 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+"""
+@Author  ：Naihe
+@Date    ：2022/2/12 12:08
+"""
+import platform
+import re
+from pathlib import Path
+from biplist import readPlist
+
+
+def get_path():
+    """
+    获取路径
+    """
+    if platform.system() == "Windows":
+        path = "."
+    else:
+        path = "/var/mobile/Library/Caches/com.apple.Pasteboard"
+    path = max(
+        [(f.stat().st_mtime, f)
+         for f in Path(path).iterdir()
+         if f.is_dir()]
+    )[1]
+    now_file = list(filter(lambda x: x != path / "Manifest.plist", path.iterdir()))
+    return now_file
+
+
+def read_data(now_file):
+    if len(now_file) < 2:  # 文本
+        now_file = max(  # 选取文本内容最大的，实际只有一个文件
+            [(f.stat().st_mtime, f)
+             for f in now_file
+             if f.is_file()]
+        )[1]
+        text = now_file.read_text(encoding="utf-8")
+        return text
+    else:  # 图像
+        byte = now_file[0].read_bytes()
+        return byte
+
+
+def write_data(now_file, data):
+    if len(now_file) < 2:  # 文本
+        now_file = max(  # 选取文本内容最大的，实际只有一个文件
+            [(f.stat().st_mtime, f)
+             for f in now_file
+             if f.is_file()]
+        )[1]
+        now_file.write_text(data, encoding="utf-8")
+    else:  # 图像
+        now_file[0].write_bytes(data)
+
+
+def read_data_cookie():
+    if platform.system() == "Windows":
+        path = "."
+        paths = Path(path)
+    else:
+        path = "/var/mobile/Containers/Shared/AppGroup"
+        paths = Path(path)
+    for i in paths.iterdir():
+        plist = readPlist(str(paths / i / ".com.apple.mobile_container_manager.metadata.plist"))
+        if plist['MCMMetadataIdentifier'] == "group.jdmobile":
+            paths = paths / i / "Library/Preferences"
+            filename = "group.jdmobile.plist"
+            # from biplist import *
+            # plist = readPlist(str(paths / filename))
+            # data = re.compile("pin=.*?;wskey=.*?;").findall(plist['Widget_cookieStr'])
+            with open(str(paths / filename), 'rb') as f:
+                plist = f.read()
+                data = re.compile("pin=.*?;wskey=.*?;").findall(str(plist))
+                return data.pop()
+
+
+if __name__ == '__main__':
+    file = get_path()
+    print(file)
+    data = read_data(file)
+    print(data)
+    # write_data(file, data)
+
+    # from biplist import *
+    # plist = readPlist(str(paths / filename))
+    # data = re.compile("pin=.*?;wskey=.*?;").findall(plist['Widget_cookieStr'])
