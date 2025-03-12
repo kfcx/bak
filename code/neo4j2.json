@@ -1,0 +1,856 @@
+{
+    "What Cypher statement will return actors and the directors who directed their movies?": {
+        "MATCH (actor)-[a:ACTED_IN]->(movie)<-[b:DIRECTED]-(director) RETURN a, b ": false,
+        "MATCH (actor)-[:ACTED_IN]->(movie)<-[:DIRECTED]-(director) RETURN actor, director": null,
+        "MATCH (actor)-[:ACTED_IN]-(movie) CONNECT (movie)-[d:DIRECTED]-(director)RETURN actor, director": false,
+        "MATCH (actor)-[:ACTED_IN]->(movie)JOIN (movie)<-[:DIRECTED]-(director)RETURN actor, director": false
+    },
+    "Which Neo4j 4.x features are only available in Enterprise Edition? Select all that apply.": {
+        "More than one user database per Neo4j instance.": true,
+        "Support for Spring Boot.": false,
+        "Role Based Access Control.": true,
+        "Support for Fabric.": true
+    },
+    "The following Cypher statement may not return the list of all employees who work for Acme.MATCH (a:Employee {id:5})-[:WORKS_FOR]->(b:Company {name:\"Acme\"})RETURN a LIMIT 10Select the statement(s) below that describe why the statement may not return the list of all employees who work for Acme. Choose all that apply.": {
+        "The LIMIT 10 following the RETURN clause means we will only get 10 results and there may be more than 10 employees who work at Acme in the graph.": true,
+        "We are returning only the variable a; to get the list of employee names we would have to return a.name.": false,
+        "We are matching on a node with an Employee label and with an id property of value 5, which may refer only to a single employee.": true,
+        "The LIST keyword needs to be used in the RETURN statement to generate the list of all nodes.": false
+    },
+    "Can you run Cypher statements on the system database? Select all that apply.": {
+        "Yes, but limited statements.": false,
+        "Yes, all Cypher statements.": false,
+        "No, only special commands": true,
+        "Special commands but with WHERE and YIELD to filter rows and columns.": true
+    },
+    "Suppose you want to write a query that tests whether the year  property value for an Invoice  node is one of several values in a list of years [2015, 2016, 2017, 2018, 2019]. How would you write the WHERE clause to test the Invoice  node, i  value for the year  property?": {
+        "WHERE i.year IN [2015, 2016, 2017, 2018, 2019]": null,
+        "WHERE i.year CONTAINS [2015, 2016, 2017, 2018, 2019]": false,
+        "WHERE contains(i.year, [2015, 2016, 2017, 2018, 2019])": false,
+        "WHERE i.contains(year , [2015, 2016, 2017, 2018, 2019])": false
+    },
+    "What feature of Neo4j Browser enables you to save Cypher scripts for use with different databases?": {
+        "Browser Sync": null,
+        ":saveQuery": false,
+        "Browser Save": false,
+        ":sync": false
+    },
+    "In Neo4j Desktop, you can start multiple Neo4j instances at the same time.": {
+        "True": false,
+        "False": null
+    },
+    "How do you ensure that the same relationship is not created twice between two nodes?": {
+        "Use the MERGE keyword when creating the relationship.": null,
+        "Use the UNIQUE keyword when creating the relationship.": false,
+        "Use the ONLY keyword when creating the relationship.": false,
+        "Use the DISTINCT keyword when creating the relationship.": false
+    },
+    "How many nodes can a single relationship connect?": {
+        "Exactly two.": false,
+        "Exactly one.": false,
+        "One or two.": null,
+        "More than two.": false,
+        "None of the above.": false
+    },
+    "Suppose you have a query in Neo4j Browser that is taking too long to execute on your local system. It does not return a lot of results so you know that the problem may be in the query itself. What are some ways to kill the query? Choose all that apply.": {
+        "In a different Neo4j Browser window:Execute :listQueries which returns the list of queries currently running. CALL dbms.killQuery('query-id')  ": true,
+        "In a different Neo4j Browser window:Execute :listQueries which returns the list of queries currently running. Select the Kill icon in the UI to kill the query.  ": true,
+        "In the same Neo4j Browser window:Enter CTRL+C Execute :listQueries which returns the list of queries currently running. Select the Kill icon in the UI to kill the query.  ": false,
+        "In the same Neo4j Browser window:Enter CTRL+C Execute :listQueries which returns the list of queries currently running. CALL dbms.killQuery('query-id')  ": false
+    },
+    "By default, what libraries are always available to your project in Neo4j Desktop? Choose all that apply.": {
+        "APOC": true,
+        "Graph Data Science": true,
+        "GraphQL": true,
+        "Linkurious": false,
+        "JQuery": false
+    },
+    "What are valid protocols in Neo4j 4.x? Select all that apply.": {
+        "neo4j://": true,
+        "neo4j+s://": true,
+        "neo4j+ssc://": true,
+        "neo4j+scc://": false
+    },
+    "Which of the following are valid user database names? Select all that apply.": {
+        "graph.db": true,
+        "_test1": false,
+        "test1": true,
+        "ny": false
+    },
+    "Suppose that you have created nodes in the graph with both labels Vehicle  and Car . What Cypher statements can you execute to remove the Vehicle label from all nodes?  Choose all that apply.": {
+        "MATCH (n:Vehicle:Car)REMOVE n:Vehicle": true,
+        "MATCH (n:Vehicle)REMOVE n:Vehicle": true,
+        "MATCH (n:Vehicle:Car)label(n) = Car": false,
+        "MATCH (n:Vehicle)label(n) = Car": false
+    },
+    "By default, what applications are available to a project you create in Neo4j Desktop? Choose all that apply.": {
+        "Neo4j Admin Tool": false,
+        "Neo4j Bloom": true,
+        "Neo4j ETL Tool": true,
+        "Neo4j Browser": true
+    },
+    "What Cypher clause was introduced in Neo4j 4.1 that allows you to specify a database for a query?": {
+        "SETDB <dbname>": null,
+        "BEGIN <dbname>": null,
+        "WITH DB <dbname>": false,
+        "USE <dbname>": null
+    },
+    "What Cypher syntax do you use to create a subquery?": {
+        "SUBQUERY { <Cypher query>}": false,
+        "DO { <Cypher query>}": false,
+        "DO:  <Cypher query> :END": false,
+        "CALL { <Cypher query>}": null
+    },
+    "What statement best describes the OPTIONAL MATCH clause in Cypher?": {
+        "OPTIONAL MATCH provides parameter placeholders for Cypher queries. It holds a parameterized query and then optionally matches it against the graph with the values supplied by the client.": false,
+        "The OPTIONAL MATCH clause will take a set of property values and optionally match them against all nodes in the database.": false,
+        "The OPTIONAL MATCH searches for a described pattern that may or may not exist, assigning NULL to any identifiers in the pattern that do not exist.": null,
+        "OPTIONAL MATCH is not a Cypher clause.": false
+    },
+    "What statements best describe count(*) and count(n)?": {
+        "count(n) only counts distinct values.": false,
+        "count(n) does not count null values.": true,
+        "There is no difference between count(*) and count(n).": false,
+        "count(*) counts rows, not values.": true
+    },
+    "Foreign keys are necessary in a graph database. These allow you to determine which nodes are related.": {
+        "True": false,
+        "False": null
+    },
+    "Neo4j uses the property graph model.  What statement best describes a property graph?": {
+        "Nodes and relationships define the graph while properties add context by storing relevant information in the nodes and relationships.": null,
+        "The property graph allows for configuration properties to define schema and structure of the graph.": false,
+        "Property graph defines a graph meta-structure that acts as a model or schema for the data as it is entered.": null,
+        "The property graph is a model similar to RDF which describes how Neo4j stores resources in the database.": false
+    },
+    "Suppose an existing Person node has these properties set:name: 'Joe'age: 30What is the result of executing this Cypher statement:MATCH (p:Person) WHERE p.name = 'Joe'SET p = {name: 'Joseph',               address: '100 Main Street'}": {
+        "The node now has these properties:name: 'Joseph'address: '100 Main Street'": null,
+        "The node now has these properties:name: 'Joseph'age:30address: '100 Main Street'": null,
+        "The node now has these properties:name: 'Joe'address: '100 Main Street'": false,
+        "The node now has these properties:name: 'Joseph'age: 30": null
+    },
+    "This Cypher statement is valid:MATCH (v:Vehicle)-[:OWNED_BY]->(p:Person)WITH p, collect(p.name) as ownersRETURN v, owners": {
+        "True": false,
+        "False": null
+    },
+    "What Cypher keyword is used to define an alias in a Cypher statement?": {
+        "ALIAS": false,
+        "AS": null,
+        "SET": false,
+        "USE": false
+    },
+    "When modeling relationships between two nodes, you should use a NULL relationship to represent the absence of a relationship between two nodes.": {
+        "True": false,
+        "False": null
+    },
+    "What UIs released by Neo4j are available to developers of a Neo4j application? Choose all that apply.": {
+        "Neo4j Arrows": false,
+        "Neo4j Optimizer": false,
+        "Neo4j Desktop": true,
+        "Neo4j Browser": true,
+        "Neo4j Bloom": true,
+        "Neo4j Query Planner": false
+    },
+    "Adding a label to a node will automatically index the name property.": {
+        "True": false,
+        "False": null
+    },
+    "Suppose all nodes with the label, Person , have a property, name . What Cypher statements will rename all name  properties for these nodes to fullName ? Choose all that apply.": {
+        "MATCH (p:Person) \rSET p.fullName = p.name , p.name = null": true,
+        "MATCH (p:Person) \rSET p.fullName = p.name \rREMOVE p.name": true,
+        "MATCH (p:Person) \rRENAME(p.fullName,p.name) ": false,
+        "MATCH (p:Person) \rSET label(p.name) = label(p.fullName)": false
+    },
+    "What type of database is Neo4j?": {
+        "Semantic database.": false,
+        "Graph database.": null,
+        "Key-value store.": false,
+        "Relational database.": false,
+        "Document database.": false
+    },
+    "What types of properties can be stored in a fulltext  schema index? Select all that apply.": {
+        "String properties of nodes with certain labels.": true,
+        "Any kind of property.": false,
+        "Array properties of relationships.": false,
+        "String properties of relationships with certain relationship-types.": true
+    },
+    "What statement best describes properties in Neo4j?": {
+        "Properties are the key-value pairs used for nodes and relationships.": null,
+        "Properties are the key-value pairs used exclusively for nodes.": false,
+        "Properties are the key-value pairs used exclusively for relationships.": false,
+        "None of the above.": false
+    },
+    "You can create the same type of relationship between two nodes with each relationship having different properties.": {
+        "True": null,
+        "False": false
+    },
+    "What statements describe Neo4j's Bolt protocol? Choose all that apply.": {
+        "Used to implement JDBC access to the Neo4j database.": false,
+        "Compresses data sent over the wire.": true,
+        "Can be used to encrypt data over the wire.": true,
+        "Binary protocol for application access to the Neo4j database.": true
+    },
+    "What schema objects are used in a Neo4j database?": {
+        "Tables.": false,
+        "Columns.": false,
+        "Materialized views.": false,
+        "Rows.": false,
+        "None of the above.": true
+    },
+    "Given this Cypher statement, what data is returned from the query?MATCH (person:Person)WHERE person.id = 526321RETURN KEYS(person)": {
+        "The key pointers for relationships connected to the node with the Person label and an id property with a value of 526321.": false,
+        "A collection of the property keys stored on the node with the Person label and an id property with a value of 526321.": null,
+        "The index keys stored for the node with the Person label and an id property with a value of 526321.": false,
+        "The internal key reference pointer for the node with the Person label and an id property with a value of 526321.": false
+    },
+    "What Cypher keyword do you use to add a property to an existing node?": {
+        "CREATE": false,
+        "UPDATE": false,
+        "SET": null,
+        "ADD": false
+    },
+    "Why are labels used in a Neo4j database? Choose all that apply.": {
+        "Labels are used associate indexes and constraints with groups of nodes.": true,
+        "Labels represent tables in the database.": false,
+        "Labels group like nodes together.": true,
+        "Labels represent entities, such as users, products, or company.": true
+    },
+    "What set of elements are used to specify a Neo4j data model?": {
+        "Nodes, relationships, and properties.": null,
+        "Nodes and relationships.": false,
+        "Nodes and properties.": false,
+        "Nodes, foreign keys, and relationships.": false,
+        "Rows, properties, and relationships.": false
+    },
+    "Select the Cypher statements that will return the number of cities in the state of California. Choose all that apply.": {
+        "MATCH (state:State {name:\"California\"})\rJOIN state, MATCH (city:City)\rRETURN count(city)": false,
+        "MATCH (:State {name:\"California\"})<-[:LOCATED_IN]-(city:City)\rRETURN count(city)": true,
+        "MATCH (city:City)\rFILTER relationships(LOCATED_IN)\rFILTER related(:STATE {name:\"California\"})\rRETURN count(city)": false,
+        "MATCH (state:State)<-[:LOCATED_IN]-(city:City)\rWHERE state.name=\"California\"\rRETURN count(city)": true
+    },
+    "What statement best describes the CONNECT_BY clause in Cypher?": {
+        "The CONNECT_BY clause is a constraint that ensures only certain relationships can connect two nodes with specific labels together.": false,
+        "CONNECT_BY is not a valid Cypher clause.": null,
+        "The CONNECT_BY clause is used in Cypher to limit the pattern to only certain relationship types.": false,
+        "The CONNECT_BY clause is used when constructing a graph tree structure where you want to define the nodes that a leaf node is connected to.": false,
+        "The CONNECT_BY clause is used to join nodes when they are connected by varying relationship depths.": false
+    },
+    "What Cypher statement returns the total population in all cities located in California?": {
+        "MATCH (state:STATE {name:\"California\"})MATCH (city:CITY)JOIN state,cityRETURN SUM(city.population)": false,
+        "MATCH (:STATE {name:\"California\"})<-[:LOCATED_IN]-(city:CITY)RETURN sum(city.population)": null,
+        "SUM (:CITY.population)WHERE city.relationships(:SATE.name=\"California\")RETURN": false,
+        "MATCH (city:CITY)sum(city.population) as totalWHERE (city)-[:LOCATED_IN]->(:STATE {name=\"California\"})RETURN total": false
+    },
+    "How can you use Neo4j Browser? Choose all that apply.": {
+        "You can use Neo4j Browser to connect to a database running on your local system.": true,
+        "You can use Neo4j Browser to connect to a database running on a different system, such as a Neo4j Sandbox.": true,
+        "You can use Neo4j Browser to connect to multiple databases at the same time,  each running in a different server.": false,
+        "You can use Neo4j Browser to create a new DBMS on your local system.": false
+    },
+    "Which of these statements about subqueries are true? Select all that apply.": {
+        "Subqueries can be used for post union processing.": true,
+        "Subqueries can be used as expressions.": false,
+        "Subqueries can overrride existing identifiers.": false,
+        "Subqueries can change cardinality of a query.": true
+    },
+    "Why use a cluster for a Neo4j application? Choose all that apply.": {
+        "Cache recently read data for faster access.": false,
+        "Failover when a Neo4j instance goes down.": true,
+        "Group data by type within the database for faster access.": false,
+        "Scalability for read access to the data.": true
+    },
+    "What statement best describes Cypher's MERGE clause?": {
+        "MERGE can be used to join two graph databases together by de-duplicating nodes and relationships.": false,
+        "MERGE is not a valid Cypher clause.": false,
+        "The MERGE clause ensures that a pattern exists in the graph. Either the pattern already exists, or it is created.": null,
+        "MERGE is used to return multiple nodes in a Cypher return statement.": false,
+        "MERGE is used to merge multiple nodes or relationships in the graph together to form a single node or relationship.": false
+    },
+    "What is a Neo4j Sandbox?": {
+        "A local, simulated environment you set up on your system for trying Neo4j without installing Neo4j.": false,
+        "A temporary Neo4j instance in the cloud where you can access a database for 3 to 10 days.": null,
+        "A temporary Neo4j instance in the cloud where you can access a database for up to a month.": false,
+        "A visualization tool where you can transform your model into a Neo4j database.": false
+    },
+    "What statement best describes uniqueness constraints in Neo4j?": {
+        "A rule in the database that ensures a property value is unique for all nodes with a specific label.": null,
+        "Neo4j does not support uniqueness constraints.": false,
+        "A rule in the database that ensures a node or relationship is unique.": false,
+        "A rule in the database that ensures a property value is unique among all nodes.": false
+    },
+    "In modeling, the use of bi-directional relationships is a good practice  when:": {
+        "A relationship between two nodes could be represented in either direction.": false,
+        "The semantics of the relationship in one direction is different from the other direction.": null,
+        "This is never a good idea.": false,
+        "You want to show the same relationship between two nodes in each direction.": false
+    },
+    "What statement best describes the LIMIT clause in Cypher?": {
+        "LIMIT is used to limit the number rows returned from the query or passed to other parts of a query.": null,
+        "The LIMIT clause is used with a RETURN clause to limit the types of values returned from node properties.": false,
+        "LIMIT is used within the WHERE clause to limit the number of relationships traversed during a query.": false,
+        "The LIMIT clause is used when creating nodes to limit the number of relationships between two nodes.": false
+    },
+    "Property values can be the following:": {
+        "Nested Documents": false,
+        "Numbers": true,
+        "Date": true,
+        "Strings": true,
+        "List<String>": false,
+        "boolean values": true,
+        "byte[]": true,
+        "Arrays of Strings": true
+    },
+    "How do you define \";\" as field terminator in LOAD CSV?": {
+        "LOAD CSV FROM \"url\" AS row TERMINATED BY \";\"": false,
+        "LOAD CSV FROM \"url\" AS row FIELDTERMINATOR \";\"": null,
+        "LOAD CSV DELIMETER \";\" FROM \"url\" AS row": false,
+        "LOAD CSV FROM \"url\" AS row WITH split(row, \";\") as fields": false
+    },
+    "Which keyword in the RETURN clause will return only one instance of each item in a result set?": {
+        "DISTINCT": null,
+        "FIRST": false,
+        "SINGLE": false,
+        "UNIQUE": false
+    },
+    "Neo4j allows for undirected relationships between nodes.": {
+        "True": false,
+        "False": null
+    },
+    "All nodes with the same label must have the same property keys.": {
+        "True": false,
+        "False": null
+    },
+    "What export formats does Neo4j Browser support? Choose all that apply.": {
+        "PNG": true,
+        "XLS": false,
+        "SVG": true,
+        "XML": false,
+        "CSV": true,
+        "GraphML": false
+    },
+    "Select a valid WHERE clause to follow this MATCH clause:MATCH (a)-[b:CONNECTED_TO]->(c)": {
+        "WHERE b.key = \"value\"": null,
+        "WHERE :CONNECTED_TO.key = \"value\"": false,
+        "WHERE b:CONNECTED_TO.key = \"value\"": false,
+        "A WHERE clause cannot follow a MATCH clause.": false
+    },
+    "Given the below MATCH clause, which of the following is the correct way to return the relationship types of all relationships bound to the variable b?MATCH (a)-->(c)": {
+        "RETURN b.type": false,
+        "RETURN b": null,
+        "RETURN type(b)": null,
+        "None of these are correct.": null
+    },
+    "Select the Cypher statements below that will delete a node with an id of 3563 and all of its possibly connected relationships? Choose all that apply.": {
+        "MATCH (a:Thing {id:3563})\rDETACH DELETE a": true,
+        "MATCH (a:Thing {id:3563})--(b)\rDELETE a, r": false,
+        "MATCH (a:Thing {id:3563})\rOPTIONAL MATCH (a)--()\rDELETE a, r": true,
+        "MATCH (a:Thing {id:3563})\rDELETE a": false
+    },
+    "In this Cypher clause, what type of data does val  represent?SET val = {X: 1, Y: 2, Z: 3}": {
+        "map": null,
+        "orderList": false,
+        "list": false,
+        "keyValueList": false
+    },
+    "Suppose an existing Person node has these properties set:name: 'Joe'age: 30What is the result of executing this Cypher statement:MATCH (p:Person) WHERE p.name = 'Joe'SET p = {name: 'Joseph',               address: '100 Main Street'}": {
+        "The node now has these properties:name: 'Joseph'address: '100 Main Street'": null,
+        "The node now has these properties:name: 'Joseph'age:30address: '100 Main Street'": false,
+        "The node now has these properties:name: 'Joe'address: '100 Main Street'": false,
+        "The node now has these properties:name: 'Joseph'age: 30": false
+    },
+    "By default, what applications are available to a project you create in Neo4j Desktop? Choose all that apply.": {
+        "Neo4j Bloom": true,
+        "Neo4j Browser": true,
+        "Neo4j ETL Tool": true,
+        "Neo4j Admin Tool": false
+    },
+    "Cypher has a collection of statistics functions that allow you to identify data points such as the maximum and minimum values, standard deviation, and percentiles.": {
+        "True": null,
+        "False": false
+    },
+    "What are some use-cases for the multi-database feature? Select all that apply.": {
+        "Multi-tenancy.": true,
+        "Integration of rdbms schemata.": false,
+        "Separate datasets in a dbms.": true,
+        "Separating test and staging databases.": true
+    },
+    "How can you find out all procedures that are available onyour Neo4j instance?": {
+        ":procedures": null,
+        "CALL db.procedures()": false,
+        "CALL dbms.procedures()": null,
+        "CALL dbms.listProcedures()": false
+    },
+    "Given a model consisting of nodes with the Person label connected by relationships with type KNOWS, select the statements below that will match on both Sarah's friends and her friends of friends? Choose all that apply.": {
+        "MATCH (sarah:Person)-[:KNOWS]->(friend:Person)WHERE sarah.name = \"Sarah\"RETURN friend": false,
+        "MATCH (sarah:Person)-[:KNOWS*1..2]->(friend:Person)WHERE sarah.name = \"Sarah\"RETURN friend": true,
+        "MATCH (sarah:Person)-[:KNOWS]->(friend:Person)OPTIONAL MATCH (friend)-[:KNOWS]->(fof:Person)WHERE sarah.name = \"Sarah\"RETURN friend, fof": true,
+        "All of these are correct.": false
+    },
+    "Two nodes can only be connected by a single relationship.": {
+        "True": false,
+        "False": null
+    },
+    "What, specifically, does the following expression do?  Choose all that apply.size( (n)-[:TYPE]->() ) ": {
+        "It executes a MATCH first and then returns the size of the path - collection.": false,
+        "It counts the number of relationships with this type and direction.": true,
+        "It reads the degree-value for this relationship-type and direction directly from the count store.": true,
+        "This is not valid Cypher.": false
+    },
+    "Relationships are defined with regard to node instances, not classes of nodes.": {
+        "True": null,
+        "False": false
+    },
+    "In the following MATCH clause, which of the elements represents the relationship between two nodes?MATCH (a)-->(c)": {
+        "(a)": false,
+        "(c)": false,
+        "(a)-": false,
+        "-->": null,
+        "->(c)": false
+    },
+    "In Neo4j Browser, what statement do you execute to display the constraints defined for the database?": {
+        "CALL db.constraints()": null,
+        ":showConstraints": false,
+        "CALL db.constraints() RETURN constraints": false,
+        "CALL db.schema() RETURN constraints": false
+    },
+    "Suppose you have some nodes that could have multiple labels.  In a Cypher query where you have retrieved all nodes: MATCH (n) , what would you add to the Cypher code to return the labels for each node?": {
+        "RETURN labels(n)": null,
+        "RETURN db.labels(n)": false,
+        "RETURN n{:?}": false,
+        "RETURN ?:n": false
+    },
+    "It is possible for a node to have more than one label.": {
+        "True": null,
+        "False": false
+    },
+    "The four building blocks of a Neo4j Graph Database are:Nodes Relationships Properties Labels  ": {
+        "True": true,
+        "False": false
+    },
+    "What UIs released by Neo4j are available to developers of a Neo4j application? Choose all that apply.": {
+        "Neo4j Browser": true,
+        "Neo4j Arrows": false,
+        "Neo4j Desktop": true,
+        "Neo4j Query Planner": false,
+        "Neo4j Bloom": true,
+        "Neo4j Optimizer": false
+    },
+    "Labels are best described as:": {
+        "Table names in the graph database.": false,
+        "Special types of node or relationship properties.": false,
+        "Tags that are used to group nodes into sets.": null,
+        "Unique tags on each node for fast lookups.": false
+    },
+    "Suppose you have a database named test1. What  can you execute to reset it to have no data or metadata?": {
+        "RESET test1;": null,
+        "RECREATE DATABASE test1;": null,
+        "CREATE OR REPLACE DATABASE test1;": null,
+        "REPLACE test1;": false
+    },
+    "ORDER BY is a valid Cypher clause.": {
+        "True": null,
+        "False": false
+    },
+    "Suppose you have two Person nodes in the graph with names \"John Smith\" and \"Tom Jones\". What statements below are valid statements for creating a relationship between these two nodes? Choose all that apply.": {
+        "MATCH (p:Person), (p2:Person) WHERE p.name = 'John Smith' AND p2.name = 'Tom Jones ' CREATE (p)-[:FOLLOWS]->(p2)": true,
+        "MATCH (p:Person), (p2:Person) WHERE p.name = 'John Smith' AND p2.name = 'Tom Jones ' CREATE (p)-[]->(p2)": false,
+        "MATCH (p:Person), (p2:Person) WHERE p.name = 'John Smith' AND p2.name = 'Tom Jones ' CREATE (p)<-[:FOLLOWS]-(p2)": true,
+        "MATCH (p:Person), (p2:Person) WHERE p.name = 'John Smith' AND p2.name = 'Tom Jones ' CREATE (p)-[:FOLLOWS]-(p2)": false
+    },
+    "By default, what libraries are always available to your project in Neo4j Desktop? Choose all that apply.": {
+        "APOC": true,
+        "Graph Data Science": true,
+        "GraphQL": true,
+        "Linkurious": false,
+        "JQuery": false
+    },
+    "Two nodes representing the same kind of entity, such as a person, can be connected to other nodes using different relationship types. ": {
+        "True": true,
+        "False": false
+    },
+    "What function allows you to create a list of values as result of an aggregation?": {
+        "aggregate()": false,
+        "collect()": true,
+        "toList()": false,
+        "values()": false
+    },
+    "What is the default port number used by Neo4j Browser to access a Neo4j instance running on your local machine?": {
+        "5400": false,
+        "8001": false,
+        "8080": false,
+        "7474": true
+    },
+    "Neo4j is an ACID-compliant database.": {
+        "True": true,
+        "False": false
+    },
+    "Where can use the :use <dbname> feature? Select all that apply.": {
+        "Neo4j Browser": true,
+        "Driver Session": false,
+        "Cypher-Shell": true,
+        "Neo4j-Admin command": false
+    },
+    "How can you use Neo4j Browser? Choose all that apply.": {
+        "You can use Neo4j Browser to connect to a database running on your local system.": true,
+        "You can use Neo4j Browser to connect to a database running on a different system, such as a Neo4j Sandbox.": true,
+        "You can use Neo4j Browser to connect to multiple databases at the same time,  each running in a different server.": false,
+        "You can use Neo4j Browser to create a new DBMS on your local system.": false
+    },
+    "What protocol does a Java application use to access the Neo4j database?": {
+        "RMI": false,
+        "Bolt": true,
+        "TLS": false,
+        "JMS": false
+    },
+    "Neo4j is available for free (Community Edition) or with a commercial license (Enterprise Edition).": {
+        "True": true,
+        "False": false
+    },
+    "What export formats does Neo4j Browser support? Choose all that apply.": {
+        "CSV": true,
+        "GraphML": false,
+        "PNG": true,
+        "XLS": false,
+        "SVG": true,
+        "XML": false
+    },
+    "What statement best describes a relationship in Neo4j?": {
+        "A link that indicates how one type of node is, or should be connected to another type of node.": false,
+        "A structure with a name and direction that describes the relationship between two nodes and provides structure and context to the graph.": true,
+        "The link between two types of nodes.": false,
+        "A key/value pair that identifies additional nodes that a single node is related to, including direction and weight.": false
+    },
+    "Suppose you have a database that contains a million Person  nodes and a million Places  nodes. All Person  nodes have a property, name . The Places  nodes do not have a property, name . What is the fastest way to count the number of Person  nodes in the database?": {
+        "MATCH (p)  WHERE EXISTS (p.name) RETURN count(p)": false,
+        "MATCH (p:Person) RETURN count(p) ": true,
+        "MATCH (p) WHERE \"Person\" IN labels(p) RETURN count(p)": false,
+        "MATCH (p:Person) RETURN sum(p)": false
+    },
+    "Select the Cypher statements below that will delete a node with an id of 3563 and all of its possibly connected relationships? Choose all that apply.": {
+        "MATCH (a:Thing {id:3563})DETACH DELETE a": true,
+        "MATCH (a:Thing {id:3563})OPTIONAL MATCH (a)--()DELETE a, r": true,
+        "MATCH (a:Thing {id:3563})--(b)DELETE a, r": false,
+        "MATCH (a:Thing {id:3563})DELETE a": false
+    },
+    "Neo4j uses the property graph model.  What statement best describes a property graph?": {
+        "Nodes and relationships define the graph while properties add context by storing relevant information in the nodes and relationships.": true,
+        "The property graph allows for configuration properties to define schema and structure of the graph.": false,
+        "Property graph defines a graph meta-structure that acts as a model or schema for the data as it is entered.": false,
+        "The property graph is a model similar to RDF which describes how Neo4j stores resources in the database.": false
+    },
+    "Why use a cluster for a Neo4j application? Choose all that apply.": {
+        "Scalability for read access to the data.": true,
+        "Failover when a Neo4j instance goes down.": true,
+        "Group data by type within the database for faster access.": false,
+        "Cache recently read data for faster access.": false
+    },
+    "What statements describe Neo4j's Bolt protocol? Choose all that apply.": {
+        "Compresses data sent over the wire.": true,
+        "Binary protocol for application access to the Neo4j database.": true,
+        "Can be used to encrypt data over the wire.": true,
+        "Used to implement JDBC access to the Neo4j database.": false
+    },
+    "When modeling with Neo4j, which of the following best represents inferring a symmetric relationship for the below simple graph:(parent:Parent)-[:PARENT_OF]->(child:Child)": {
+        "child is the PARENT_OF parent": false,
+        "child is a CHILD_OF parent": true,
+        "parent is the CHILD_OF parent": false,
+        "child HAS_SIBLINGS from parent": false
+    },
+    "In a Neo4j database, what are nodes are used for?": {
+        "Used to represent entities and complex value types in the graph.": true,
+        "As a table structure that identifies like entities and groups them together.": false,
+        "As a reference holder for keys, which also store values, and foreign key links to other nodes.": false,
+        "They are stored as a linked list that enables you to traverse all data in the graph starting at the root node.": false
+    },
+    "What Cypher statement returns the keys used for properties on nodes and relationships in the database?": {
+        "RETURN db.keys()": null,
+        "CALL db.keys()": null,
+        "RETURN  db.propertyKeys()": false,
+        "CALL db.propertyKeys()": null
+    },
+    "The EXPLAIN keyword before a query shows the execution plan and what happened when the query ran (db hits).": {
+        "True": false,
+        "False": null
+    },
+    "Suppose you want to parameterize this query:MATCH (p:Person) WHERE p.name = XXXXand XXXX is the parameter. You have defined a parameter called actorName  that you can set in your session. How do you specify the actorName  parameter in this query?": {
+        "MATCH (p:Person) WHERE p.name = #actorName": false,
+        "MATCH (p:Person) WHERE p.name = param(actorName)": false,
+        "MATCH (p:Person) WHERE p.name = $actorName": true,
+        "MATCH (p:Person) WHERE p.name = value(actorName)": false
+    },
+    "The following Cypher statement queries the graph for employees of the Acme company.MATCH (a:Employee {id:5})-[:WORKS_FOR]->(b:Company {name:\"Acme\"})RETURN a LIMIT 10Select the statement(s) below that describe why this statement may not return the list of all names of employees who work for Acme. Choose all that apply.": {
+        "We are matching on a node with an Employee label and with an id property of value 5, which may refer only to a single employee and not all of them.": true,
+        "We are returning the nodes represented by the variable a; to get the list of employee names we would have to return a.name.": true,
+        "The LIMIT 10 following the RETURN clause means we will only get 10 results and there may be more than 10 employees who work at Acme in the graph.": true,
+        "The LIST keyword needs to be used in the RETURN statement to generate the list of all nodes.": false
+    },
+    "Suppose you want to retrieve all Person nodes that have a firstName  value that starts with the string \"Jo\". How would you retrieve these nodes?": {
+        "MATCH (p:Person) WHERE p.firstName STARTS WITH \"Jo\"RETURN p": true,
+        "MATCH (p:Person) WHERE index(p.firstName,1,2) = \"Jo\"RETURN p": false,
+        "MATCH (p:Person) WHERE p.firstName BEGINS WITH \"Jo\"RETURN p": false,
+        "MATCH (p:Person) WHERE begins(p.firstName,2) = \"Jo\"RETURN p": false
+    },
+    "What is the correct syntax to pass identifiers to a subquery?": {
+        "CALL (a,b,c) { } ": null,
+        "CALL { WITH a,b,c }": null,
+        "CALL { USE a,b,c }": false,
+        "CALL { ... JUST USE a,b,c  }": false
+    },
+    "What is the system database used for? Select all that apply.": {
+        "Contains inventory of all user databases for the Neo4j instance.": true,
+        "Contains all indexes for user databases.": false,
+        "Holds the schema for each user database.": false,
+        "Provides information about the status of user databases, whether they are online or offline.": true
+    },
+    "The following Cypher statement may not return the list of all employees who work for Acme.MATCH (a:Employee {id:5})-[:WORKS_FOR]->(b:Company {name:\"Acme\"})RETURN a LIMIT 10Select the statement(s) below that describe why the statement may not return the list of all employees who work for Acme. Choose all that apply.": {
+        "The LIST keyword needs to be used in the RETURN statement to generate the list of all nodes.": false,
+        "We are matching on a node with an Employee label and with an id property of value 5, which may refer only to a single employee.": true,
+        "The LIMIT 10 following the RETURN clause means we will only get 10 results and there may be more than 10 employees who work at Acme in the graph.": true,
+        "We are returning only the variable a; to get the list of employee names we would have to return a.name.": false
+    },
+    "Given the below MATCH clause, which of the following is the correct way to return the relationship types of all relationships bound to the variable b?MATCH (a)-->(c)": {
+        "RETURN b.type": null,
+        "RETURN b": null,
+        "RETURN type(b)": null,
+        "None of these are correct.": false
+    },
+    "What statement best describes index-free adjacency for a Neo4j database.": {
+        "Each group of nodes is stored as a table where the relationships are mapped to nodes in the same group.": false,
+        "Nodes and their relationships are stored as pointers so that access is very fast without the need for an index to traverse nodes.": true,
+        "Each relationship is stored as a table where nodes related to each are stored in the same table.": false,
+        "You never  have to add indexes to a Neo4j database to perform faster queries.": false
+    },
+    "In Neo4j Desktop, how many databases (graphs) and projects can you create?": {
+        "Multiple databases per project where you can create multiple projects.": true,
+        "At most one database per project, where you can create multiple projects.": false,
+        "Only one database that is shared by all projects on your system.": false,
+        "Only one database and one project on your system.": false
+    },
+    "Suppose you are in a Neo4j Browser session or a cypher-shell session and are connected to a running Neo4j instance. What commands can you enter to create a database named test1? Select all that apply.": {
+        "CREATE DATABASE test1;": true,
+        "CREATE  AND START DATABASE test1;": false,
+        ":USE system;CREATE DATABASE test1;": true,
+        ":USE system;CREATE  AND START DATABASE test1;": false
+    },
+    "Given this Cypher statement, what data is returned from the query?\rMATCH (person:Person)\rWHERE person.id = 526321\rRETURN KEYS(person)": {
+        "A collection of the property keys stored on the node with the Person label and an id property with a value of 526321.": null,
+        "The key pointers for relationships connected to the node with the Person label and an id property with a value of 526321.": false,
+        "The internal key reference pointer for the node with the Person label and an id property with a value of 526321.": false,
+        "The index keys stored for the node with the Person label and an id property with a value of 526321.": null
+    },
+    "What does this Cypher statement do?\rMATCH (city:City {name: \"San Mateo\"})\rMERGE (state:State {name: \"California\"})\rMERGE (city)-[:LOCATED_IN]->(state)\rRETURN city, state": {
+        "If there is a City node with name \"San Mateo\", uniquely create a :LOCATED_IN relationship to a State node with name \"California,\" creating the State node if it does not already exist.": null,
+        "The :LOCATED_IN relationship is matched only if there is both a City node with name \"San Mateo\" and a State node with name \"California.\"": false,
+        "The :LOCATED_IN relationship is only created if there is both a City node with name \"San Mateo\" and a State node with name \"California.\"": null,
+        "The :LOCATED_IN relationship is overwritten only if there is both a City node with name \"San Mateo\" and a State node with name \"California.\"": null
+    },
+    "Suppose you have some nodes that could have multiple labels.  In a Cypher query where you have retrieved all nodes: MATCH (n) , what would you add to the Cypher code to return the labels for each node?": {
+        "RETURN labels(n)": null,
+        "RETURN db.labels(n)": null,
+        "RETURN n{:?}": false,
+        "RETURN ?:n": false
+    },
+    "What languages have an officially supported driver for Neo4j?": {
+        "Go": true,
+        "Python": true,
+        "Java": true,
+        "R": false,
+        "PHP": false
+    },
+    "Suppose you have two Person nodes in the graph with names \"John Smith\" and \"Tom Jones\". What statements below are valid statements for creating a relationship between these two nodes? Choose all that apply.": {
+        "MATCH (p:Person), (p2:Person) \rWHERE p.name = 'John Smith' AND p2.name = 'Tom Jones ' \rCREATE (p)-[:FOLLOWS]->(p2)": true,
+        "MATCH (p:Person), (p2:Person) \rWHERE p.name = 'John Smith' AND p2.name = 'Tom Jones ' \rCREATE (p)-[:FOLLOWS]-(p2)": false,
+        "MATCH (p:Person), (p2:Person) \rWHERE p.name = 'John Smith' AND p2.name = 'Tom Jones ' \rCREATE (p)<-[:FOLLOWS]-(p2)": true,
+        "MATCH (p:Person), (p2:Person) \rWHERE p.name = 'John Smith' AND p2.name = 'Tom Jones ' \rCREATE (p)-[]->(p2)": false
+    },
+    "Given the below MATCH clause, which of the following is the correct way to return the relationship types of all relationships bound to the variable b?\rMATCH (a)-->(c)": {
+        "RETURN b.type": null,
+        "RETURN b": false,
+        "RETURN type(b)": null,
+        "None of these are correct.": null
+    },
+    "When modeling with Neo4j, which of the following best represents inferring a symmetric relationship for the below simple graph:\r(parent:Parent)-[:PARENT_OF]->(child:Child)": {
+        "child is a CHILD_OF parent": null,
+        "child HAS_SIBLINGS from parent": null,
+        "parent is the CHILD_OF parent": false,
+        "child is the PARENT_OF parent": false
+    },
+    "What statement best describes Cypher, Neo4j's graph query language?": {
+        "It is a declarative query language designed for graph pattern matching and traversals.": null,
+        "It's a SQL plugin for Neo4j.": false,
+        "It is a procedural programming language for interfacing with Neo4j.": false,
+        "It is a regular expression-like programming language for interfacing with Neo4j.": false
+    },
+    "Suppose we want to return the list all movies for each actor whose name contains \"Tom\".\rWhat is wrong with this code? Select the correct answer,\rMATCH (a:Person)\rWHERE a.name  CONTAINS \"Tom\"\rWITH a, a.name AS actorName\rCALL\r{\rMATCH (a)-[:ACTED_IN]->(m:Movie)\rRETURN collect(m.title) as movies\r}\rRETURN actorName , movies": {
+        "You must  add WITH movies, actorName after the CALL{} block.": null,
+        "You can only pass property values to a subquery, not nodes.": false,
+        "You must specify WITH in the subquery for any variables you are passing in to the subquery. In this case a.": null,
+        "The WITH clause before the CALL{} block must  be removed.": null
+    },
+    "A single node can have a relationship that points at itself.": {
+        "True": true,
+        "False": false
+    },
+    "What, specifically, does the following expression do?  Choose all that apply.\rsize( (n)-[:TYPE]->() ) ": {
+        "This is not valid Cypher.": false,
+        "It executes a MATCH first and then returns the size of the path - collection.": false,
+        "It reads the degree-value for this relationship-type and direction directly from the count store.": true,
+        "It counts the number of relationships with this type and direction.": true
+    },
+    "When you start a Neo4j instance for the first time, by default, how many databases are created?": {
+        "0": false,
+        "1": false,
+        "2": true,
+        "3": false
+    },
+    "How do you perform an aggregation in Cypher?": {
+        "Using at least one aggregation function.": true,
+        "With the AGGREGATE keyword.": false,
+        "Defining grouping keys with WITH.": false,
+        "Using the GROUP BY keyword.": false
+    },
+    "Suppose you want to parameterize this query:\rMATCH (p:Person) WHERE p.name = XXXX\rand XXXX is the parameter. You have defined a parameter called actorName  that you can set in your session. How do you specify the actorName  parameter in this query?": {
+        "MATCH (p:Person) WHERE p.name = #actorName": null,
+        "MATCH (p:Person) WHERE p.name = param(actorName)": false,
+        "MATCH (p:Person) WHERE p.name = $actorName": null,
+        "MATCH (p:Person) WHERE p.name = value(actorName)": null
+    },
+    "In Neo4j 4.x, how do you create an index on the name  property for nodes with the Customer  label?": {
+        "CREATE INDEX CustomerNameIndex ON Customer(name);": false,
+        "CREATE INDEX CustomerNameIndex FOR (c:Customer) ON (c.name);": true,
+        "CREATE INDEX CustomerNameIndex ON :Customer.name;": false,
+        "CREATE GRAPH INDEX CustomerNameIndex ON :Customer.name;": false
+    },
+    "Suppose you need additional procedures from a specialized library for use with a particular database. In your Neo4j Desktop environment, how do you set up your environment to use the specialized library?": {
+        "Add the library to the lib folder.": false,
+        "Add the library as a graph app for your project.": false,
+        "Download and re-install Neo4j Desktop from AWS marketplace with the specialized library already installed.": false,
+        "Add the library as a plugin.": true
+    },
+    "The following Cypher statement queries the graph for employees of the Acme company.\rMATCH (a:Employee {id:5})-[:WORKS_FOR]->(b:Company {name:\"Acme\"})\rRETURN a \rLIMIT 10\rSelect the statement(s) below that describe why this statement may not return the list of all names of employees who work for Acme. Choose all that apply.": {
+        "We are matching on a node with an Employee label and with an id property of value 5, which may refer only to a single employee and not all of them.": true,
+        "We are returning the nodes represented by the variable a; to get the list of employee names we would have to return a.name.": true,
+        "The LIMIT 10 following the RETURN clause means we will only get 10 results and there may be more than 10 employees who work at Acme in the graph.": true,
+        "The LIST keyword needs to be used in the RETURN statement to generate the list of all nodes.": false
+    },
+    "Suppose you are modifying a database named test1 that is managed by a Neo4j 4.x instance. What directories contain information and data for the database modifications? Select all that apply.": {
+        "dbms": false,
+        "databases": true,
+        "neo4j": false,
+        "transactions": true
+    },
+    "Suppose you have a database named test1. What  can you execute to reset it to have no data or metadata?": {
+        "RESET test1;": null,
+        "RECREATE DATABASE test1;": null,
+        "CREATE OR REPLACE DATABASE test1;": null,
+        "REPLACE test1;": false
+    },
+    "What is the default database in a Neo4j instance? Select all that apply.": {
+        "It is always neo4j.": false,
+        "It is the database the client will automatically use without having to specify a database.": true,
+        "It is specified by the configuration property dbms.default_database.": true,
+        "It is the system database.": false
+    },
+    "In Neo4j Browser, what statement do you execute to display the schema of the Neo4j 4.x database?": {
+        "CALL db.schema.visualization();": true,
+        ":schema;": false,
+        "CALL db.schema() RETURN schema;": false,
+        "CALL db.schema() RETURN nodes, relationships;": false
+    },
+    "The Cypher PROFILE keyword can be used for what purpose?": {
+        "The PROFILE clause will detail the current statistics for the server, including node counts, relationship counts, and data size.": false,
+        "PROFILE will identify the schema for the current database, including labels in use, relationship types, and indexes.": false,
+        "Entered before the statement it is used to return the query plan and execution information for a Cypher statement for performance tuning purposes.": null,
+        "Used when creating parameterized Cypher queries, it tells the query engine to build a query plan for later use.": false
+    },
+    "Suppose you want to load a very large CSV file with Cypher. In Neo4j 4.x, what clause can you use?": {
+        "USING PERIODIC COMMIT LOAD CSV...": null,
+        ":auto LOAD CSV ...": false,
+        ":LOAD CSV ...": null,
+        ":auto USING PERIODIC COMMIT LOAD CSV. ...": null
+    },
+    "Suppose an existing Person node has these properties set:\rname: 'Joe'\rage: 30\rWhat is the result of executing this Cypher statement:\rMATCH (p:Person) \rWHERE p.name = 'Joe'\rSET p = {name: 'Joseph',\r               address: '100 Main Street'}": {
+        "The node now has these properties:\rname: 'Joseph'\raddress: '100 Main Street'": null,
+        "The node now has these properties:\rname: 'Joseph'\rage:30\raddress: '100 Main Street'": null,
+        "The node now has these properties:\rname: 'Joe'\raddress: '100 Main Street'": null,
+        "The node now has these properties:\rname: 'Joseph'\rage: 30": false
+    },
+    "Referential integrity is maintained in Neo4j because you cannot delete a node that has existing relationships attached.": {
+        "True": null,
+        "False": false
+    },
+    "What types of properties can be stored in a fulltext  schema index? Select all that apply.": {
+        "String properties of nodes with certain labels.": true,
+        "Any kind of property.": false,
+        "Array properties of relationships.": false,
+        "String properties of relationships with certain relationship-types.": true
+    },
+    "Suppose that you have created nodes in the graph with both labels Vehicle  and Car . What Cypher statements can you execute to remove the Vehicle label from all nodes?  Choose all that apply.": {
+        "MATCH (n:Vehicle:Car)REMOVE n:Vehicle": true,
+        "MATCH (n:Vehicle)REMOVE n:Vehicle": true,
+        "MATCH (n:Vehicle:Car)label(n) = Car": false,
+        "MATCH (n:Vehicle)label(n) = Car": false
+    },
+    "What does this Cypher statement do?MATCH (city:City {name: \"San Mateo\"})MERGE (state:State {name: \"California\"})MERGE (city)-[:LOCATED_IN]->(state)RETURN city, state": {
+        "If there is a City node with name \"San Mateo\", uniquely create a :LOCATED_IN relationship to a State node with name \"California,\" creating the State node if it does not already exist.": null,
+        "The :LOCATED_IN relationship is matched only if there is both a City node with name \"San Mateo\" and a State node with name \"California.\"": false,
+        "The :LOCATED_IN relationship is only created if there is both a City node with name \"San Mateo\" and a State node with name \"California.\"": false,
+        "The :LOCATED_IN relationship is overwritten only if there is both a City node with name \"San Mateo\" and a State node with name \"California.\"": false
+    },
+    "When you create a relationship in Cypher, you must specify a direction.": {
+        "True": null,
+        "False": false
+    },
+    "Suppose all nodes with the label, Person , have a property, name . What Cypher statements will rename all name  properties for these nodes to fullName ? Choose all that apply.": {
+        "MATCH (p:Person) RENAME(p.fullName,p.name) ": false,
+        "MATCH (p:Person) SET label(p.name) = label(p.fullName)": false,
+        "MATCH (p:Person) SET p.fullName = p.name REMOVE p.name": true,
+        "MATCH (p:Person) SET p.fullName = p.name , p.name = null": true
+    },
+    "What are some ways that you can query data from a Neo4j database? Choose all that apply.": {
+        "Through the JDBC driver shipped with Neo4j.": false,
+        "Using the Neo4j Browser Web interface that ships with Neo4j.": true,
+        "Through the message queue service that ships with Neo4j.": false,
+        "Through the Bolt protocol available with the Neo4j instance.": true
+    },
+    "Suppose you have a graph that has millions of Person  nodes that are related using the :FOLLOWS  relationship. Given this MATCH clause:MATCH (follower:Person)-[:FOLLOWS*2]->(p:Person)WHERE follower.name = 'John Smith'RETURN pWhat node or nodes are returned?": {
+        "All Person  nodes that are one or two hops away from John Smith  using the :FOLLOWS  relationship.": false,
+        "All Person  nodes that are exactly two hops away from John Smith  using the :FOLLOWS  relationship.": null,
+        "Two Person  nodes that are followed by John Smith .": false,
+        "All Person  nodes that have exactly two :FOLLOWS  relationships from John Smith .": false
+    },
+    "Select the Cypher statements that will return the number of cities in the state of California. Choose all that apply.": {
+        "MATCH (:State {name:\"California\"})<-[:LOCATED_IN]-(city:City)RETURN count(city)": true,
+        "MATCH (city:City)FILTER relationships(LOCATED_IN)FILTER related(:STATE {name:\"California\"})RETURN count(city)": false,
+        "MATCH (state:State)<-[:LOCATED_IN]-(city:City)WHERE state.name=\"California\"RETURN count(city)": true,
+        "MATCH (state:State {name:\"California\"})JOIN state, MATCH (city:City)RETURN count(city)": false
+    },
+    "The Cypher WITH clause can be used to perform some intermediate processing during a query where you may want to save some results or test some values during the query to control whether a query will end.": {
+        "True": null,
+        "False": false
+    },
+    "Suppose we want to return the list all movies for each actor whose name contains \"Tom\".What is wrong with this code? Select the correct answer,MATCH (a:Person)WHERE a.name  CONTAINS \"Tom\"WITH a, a.name AS actorNameCALL{MATCH (a)-[:ACTED_IN]->(m:Movie)RETURN collect(m.title) as movies}RETURN actorName , movies": {
+        "You must  add WITH movies, actorName after the CALL{} block.": null,
+        "You can only pass property values to a subquery, not nodes.": null,
+        "You must specify WITH in the subquery for any variables you are passing in to the subquery. In this case a.": null,
+        "The WITH clause before the CALL{} block must  be removed.": false
+    },
+    "In Neo4j Browser, you can access a Browser Guide that provides you tutorial information about a particular database or concept. For example, there is a movies  Browser Guide that enables you to load and explore the movie database. What Neo4j Browser command do you use to access a Browser Guide?": {
+        ":go": false,
+        ":play": null,
+        ":run": false,
+        ":show": false
+    },
+    "Suppose you have a query in Neo4j Browser that is taking too long to execute on your local system. It does not return a lot of results so you know that the problem may be in the query itself. What are some ways to kill the query? Choose all that apply.": {
+        "In a different Neo4j Browser window:Execute :listQueries which returns the list of queries currently running. CALL dbms.killQuery('query-id')  ": true,
+        "In a different Neo4j Browser window:Execute :listQueries which returns the list of queries currently running. Select the Kill icon in the UI to kill the query.  ": true,
+        "In the same Neo4j Browser window:Enter CTRL+C Execute :listQueries which returns the list of queries currently running. Select the Kill icon in the UI to kill the query.  ": false,
+        "In the same Neo4j Browser window:Enter CTRL+C Execute :listQueries which returns the list of queries currently running. CALL dbms.killQuery('query-id')  ": false
+    },
+    "Suppose we want to return the list all movies for each director whose name contains \"William\".A Person node also has a label of Director for those nodes representing directors.What is wrong with this code:MATCH (a:Person)WHERE a.name  CONTAINS \"William\"CALL{MATCH (a)-[:DIRECTED]->(m:Movie)RETURN collect(m.title) as movies}RETURN a.name , movies": {
+        "The first MATCH must use the Director label.": null,
+        "The variable a in the second MATCH does not reference the variable a in the first MATCH.": null,
+        "You cannot return a value from the CALL block.": false,
+        "The Director label is missing in the second MATCH.": false
+    }
+}

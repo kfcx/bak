@@ -1,0 +1,264 @@
+{
+    "The write mode will allow you to overwrite the results of previous calculations that have been saved to the main database as properties.": {
+        "True": null,
+        "False": false
+    },
+    "Which of the following can be used to parameterize a random graph? Choose all that apply.": {
+        "Relationship weight distribution function": false,
+        "Node count": true,
+        "Average degree": true,
+        "Relationship distribution function": true
+    },
+    "What algorithm execution mode should you use if you want to return the calculation results to the screen?": {
+        "stream": null,
+        "stats": false,
+        "mutate": false,
+        "write": false
+    },
+    "Algorithms exist in one of three tiers of maturity. What are the tiers? Choose all that apply.": {
+        "Production-quality": true,
+        "Alpha": true,
+        "Beta": true,
+        "Gamma": false
+    },
+    "What are the supported modes for executing graph algorithms? Choose all that apply.": {
+        "stream": true,
+        "mutate": true,
+        "execute": false,
+        "write": true
+    },
+    "Suppose you have projected a named graph that contains both Person and Organization nodes. You want to run an algorithm only on the Person nodes. What parameter do you use to filter which node labels will be used at run-time?": {
+        "nodeProjection": null,
+        "nodeLabels": null,
+        "nodeQuery": false,
+        "nodeFilter": false
+    },
+    "What do we call a network, where the relationships have a property representing the strength or cost of traversing the relationship?": {
+        "Monopartite network": null,
+        "Weighted network": null,
+        "Unweighted network": false,
+        "Random network": false
+    },
+    "Suppose you have a named graph in the Graph Catalog that contains the mutated node properties 'pageRank' and 'louvain'. How do you store the mutated properties back to Neo4j?": {
+        "gds.graph.writeNodeProperties('my-graph', ['pageRank', 'louvain'])": null,
+        "gds.graph.writeBack('my-graph', ['pageRank', 'louvain'])": false,
+        "gds.store.results('my-graph', ['pageRank', 'louvain'])": false,
+        "gds.graph.writeRelationship('my-graph', ['pageRank', 'louvain'])": false
+    },
+    "What are the advantages of Cypher projection? Choose all that apply.": {
+        "Ability to project a virtual graph": true,
+        "Faster load time than native projection": false,
+        "Flexibility of Cypher to define projected graph": true,
+        "Algorithms execute faster": false
+    },
+    "How do you use native projection to load a named graph that contains nodes labeled Person and Organization, and the MEMBER relationship?": {
+        "gds.graph.create('graph', ['Person', 'Organization'], 'MEMBER')": null,
+        "gds.graph.create('graph', 'Person', 'Organization', 'MEMBER')": false,
+        "gds.graph.create('graph', 'MEMBER', ['Person', 'Organization'])": false,
+        "gds.graph.create.cypher('graph', ['Person', 'Organization'], 'MEMBER')": false
+    },
+    "What are the benefits of using a graph projection? Choose all that apply.": {
+        "You can pick only analytically-relevant portions of the database on which to act.": true,
+        "You can only use them once, preventing confusion on what results were calculated.": false,
+        "They are compressed data structures that are optimized for topology and property lookup operations.": true,
+        "The GDS library can act on either graph projections or the full database, so there is no benefit.": false
+    },
+    "Which features can you use to project an in-memory graph? Choose all that apply.": {
+        "Cypher projection": true,
+        "Algorithm projection": false,
+        "Data transformer": false,
+        "Native projection": true
+    },
+    "What does the mutate mode of an algorithm do?": {
+        "Allows for users to change the results of the algorithm.": null,
+        "Writes the results of the algorithm to the in-memory graph and returns a single record of summary statistics.": null,
+        "Writes the results of the algorithm to the Neo4j database and returns a single record of summary statistics.": false,
+        "Returns the result of the algorithm as a stream of records.": false
+    },
+    "Which statements are true about anonymous graphs?  Choose all that apply.": {
+        "They are placed in the Graph Catalog like all other graphs.": false,
+        "You can do a single calculation without having to create a graph in the Graph Catalog.": true,
+        "Anonymous graphs only allow you to use a single relationship property.": true,
+        "It is possible to reuse an anonymous graph in downstream calculations.": false
+    },
+    "How do you use Cypher projection to load a named graph that contains Person nodes with the undirected INTERACTS relationships between them?": {
+        "gds.graph.create.cypher(  'graph',   'MATCH (p:Person) RETURN id(p) as id',   'MATCH (s:Person)-[:INTERACTS]-(t:Person) RETURN id(s) as source, id(t) as target')": null,
+        "gds.graph.create.cypher(  'graph',   'MATCH (p:Person) RETURN p as id',   'MATCH (s:Person)-[:INTERACTS]-(t:Person) RETURN s as source, t as target')": null,
+        "gds.graph.create.cypher(  'graph',   'MATCH (p:Person) RETURN id(p) as id',   'MATCH (s:Person)-[:INTERACTS]->(t:Person) RETURN id(s) as source, id(t) as target')": null,
+        "gds.graph.create.cypher(  'graph',   'MATCH (p:Person) RETURN id(p) as id',   'MATCH (s:Person)-[:INTERACTS]->(t:Person) RETURN id(s) as source, id(t) as target',   {relationshipOrientation:'UNDIRECTED'})": false
+    },
+    "How does ArticleRank differ from PageRank?": {
+        "It doesn't.  This is just a different term for the same concept.": null,
+        "ArticleRank measures the transitive influence or connectivity of nodes while PageRank does not,": null,
+        "ArticleRank reduces the impact of the assumption that relationships from nodes that have low out-degree are more important than relationships with nodes with a higher out-degree.": null,
+        "PageRank includes a damping factor, whereas ArticleRank does not.": false
+    },
+    "What is the run time for calculating the Betweenness Centrality (where n = number of nodes and m = number of relationships)?": {
+        "O(n)": null,
+        "O(m)": null,
+        "O(n*m)": null,
+        "O(n+m)": false
+    },
+    "What type of algorithms should you use if you want to convert a graph to a low-dimensional vector representation of the nodes?": {
+        "Node Vectorization": null,
+        "Node Embeddings": null,
+        "Node Tensors": false,
+        "Node": false
+    },
+    "Which of these algorithms is not a Community Detection algorithm?": {
+        "Louvain Modularity": null,
+        "PageRank algorithm": null,
+        "Label Propagation algorithm": false,
+        "Weakly Connected Components": false
+    },
+    "What algorithm should you try if a single community label becomes dominant in a densely-connected graph?": {
+        "Louvain": null,
+        "Weakly Connected Components": null,
+        "Label Propagation": null,
+        "Triangle Count": false
+    },
+    "What is the difference between the PageRank and Degree Centrality algorithms?": {
+        "They are identical.": null,
+        "The PageRank algorithm takes into account both the number of links a node has, as well as the importance of the linking nodes.": null,
+        "The Degree Centrality algorithm takes into account both the number of links a node has, as well as the importance of the linking nodes.": false,
+        "The PageRank algorithm is used to find the community structure of the network, while Degree Centrality is used to find the importance of nodes.": false
+    },
+    "Which of the following Community Detection algorithms permit the initial seeding of communities? Choose all that apply.": {
+        "Louvain": true,
+        "Weakly Connected Components": true,
+        "Label Propagation": true,
+        "Triangle Count": false
+    },
+    "Which types of relationship values can the K-Nearest Neighbors algorithm function on? Choose all that apply.": {
+        "Scalar numeric property": true,
+        "List of integers": true,
+        "List of floating-point numbers": true,
+        "String properties": false
+    },
+    "Suppose you are working with a complete graph, where each node is linked to all the other nodes in the graph. What is the average Local Clustering Coefficient of this graph?": {
+        "1": null,
+        "0": false,
+        "0.5": false,
+        "-1": false
+    },
+    "Which columns does the gds.pageRank.stream() procedure yield? Choose all that apply.": {
+        "nodeId": true,
+        "pageRank": false,
+        "score": true,
+        "node": false
+    },
+    "Which of these algorithms only work on undirected graphs? Choose all that apply.": {
+        "Triangle Count": true,
+        "Betweenness Centrality": false,
+        "Local Clustering Coefficient": true,
+        "Louvain Modularity": false
+    },
+    "What algorithm do you use to calculate the number of triangles each node belongs to?": {
+        "Triangle Count": null,
+        "Betweenness Centrality": false,
+        "Harmonic Centrality": false,
+        "Louvain Modularity": false
+    },
+    "How do you execute the Louvain Modularity algorithm and stream the intermediate communities as the result?": {
+        "gds.louvain.stream('my-graph', {mode:'hierarchical'})": null,
+        "gds.louvain.stream('my-graph', {includeIntermediateCommunities: false})": null,
+        "gds.louvain.stream('my-graph', {includeIntermediateCommunities: true})": null,
+        "gds.louvain.stream('my-graph', {stream: 'intermediate'})": false
+    },
+    "What type of similarity is the Node Similarity algorithm based on?": {
+        "Cosine Similarity": null,
+        "Jaccard Similarity": null,
+        "Euclidean Distance": false,
+        "Manhattan Distance": false
+    },
+    "Node Similarity can take advantage of edge weighting.": {
+        "True": null,
+        "False": false
+    },
+    "Suppose you calculate PageRank on an in-memory graph and want to output the results from the .stream() function. How do you return the node object for a given node?": {
+        "YIELD nodeId RETURN nodeId": null,
+        "YIELD node RETURN node": null,
+        "YIELD nodeId RETURN gds.util.asNode(nodeId)": null,
+        "None of the above": false
+    },
+    "How do you access a node property stored to an in-memory graph that was calculated with the .mutate() function?": {
+        "gds.util.getNode": null,
+        "gds.util": null,
+        "gds.util.nodeProperty": null,
+        "gds.util.fromProperty": false
+    },
+    "How do you list all the projected named graphs in the Graph Catalog?": {
+        "gds.show.graphs()": null,
+        "gds.graph.drop()": null,
+        "gds.graph.list()": null,
+        "gds.graph.create()": false
+    },
+    "What are the benefits of using named graphs? Choose all that apply.": {
+        "More algorithms available": false,
+        "Reusability of graph": true,
+        "Ability to use the mutate execution mode": true,
+        "More accurate algorithm results": false
+    },
+    "How is the Jaccard Similarity score calculated?": {
+        "Intersection of sets": null,
+        "Union of sets": null,
+        "Intersection of two sets divided by the union of sets": null,
+        "Union of two sets divided by the intersections of sets": false
+    },
+    "What algorithm supports hierarchical community detection?": {
+        "Label Propagation": null,
+        "Louvain Modularity": null,
+        "Weakly Connected Components": false,
+        "Local Clustering Coefficient": false
+    },
+    "Which metric does the Node Similarity algorithm use to compare the similarity between a pair of nodes?": {
+        "Cosine Similarity": null,
+        "Euclidian Distance": null,
+        "Jaccard Similarity score": null,
+        "Triangle Count": false
+    },
+    "When using Louvain to calculate community clusters, the intermediate clusters prior to cluster stability are available.": {
+        "True": null,
+        "False": false
+    },
+    "Which parameters can be used to define the sampling technique when you use the approximate Betwenness Centrality algorithm? Choose all that apply.": {
+        "relationshipWeightProperty": false,
+        "samplingSize": true,
+        "writeProperty": false,
+        "samplingSeed": true
+    },
+    "The Neo4j implementation of  Weakly Connected Components ignores direction in the graph.": {
+        "True": null,
+        "False": false
+    },
+    "What utility function can you use when you want to find a given node based on the node id?": {
+        "gds.util.matchNode()": null,
+        "gds.util.findNode()": null,
+        "gds.util.asNode()": null,
+        "gds.util.returnNode()": false
+    },
+    "How do you estimate memory requirements for the PageRank algorithm using the write mode?": {
+        "gds.pageRank.memory()": null,
+        "gds.pageRank.write.estimate()": null,
+        "gds.pageRank.estimate.write()": false,
+        "gds.pageRank.estimate('write')": false
+    },
+    "How do you use native projection to load a named graph that contains Person nodes with the FRIEND relationships between them? The relationships should be treated as undirected.": {
+        "gds.graph.create(  'graph',   'Person',   {FRIEND:     {type:'FRIEND',      orientation:REVERSE}  })": null,
+        "gds.graph.create(  'graph',   'Person',   {FRIEND:     {type:'FRIEND',      orientation:UNDIRECTED}  })": null,
+        "gds.graph.create(  'graph',   'Person',   'FRIEND')": null,
+        "gds.graph.create(  'graph',   'Person',   'FRIEND',   {relationshipDirection:'UNDIRECTED'})": false
+    },
+    "How do you run the PageRank algorithm with stream mode on an anonymous graph, where the graph consists of Person nodes and weighted INTERACTS relationships? The relationship weight is stored as the 'weight' property. ": {
+        "gds.pageRank.stream({   nodeQuery: 'Person',   relationshipQuery:'INTERACTS',   relationshipProperties:['weight']})": null,
+        "gds.pageRank.stream({   nodeQuery:'Person',   relationshipQuery:'INTERACTS',    relationshipWeightProperty:'weight' })": null,
+        "gds.pageRank.stream({  nodeProjection:'Person',   relationshipProjection:{    INTERACTS:{      type:'INTERACTS',       properties:['weight']      }  },   relationshipWeightProperty:'weight'})": null,
+        "gds.pageRank.stream({  nodeProjection:'Person',   relationshipProjection:'INTERACTS',   relationshipWeightProperty:'weight'})": false
+    },
+    "Centrality algorithms can be used to (Choose all that apply.):": {
+        "Examine community structure.": false,
+        "Find the most influential nodes.": true,
+        "Find the bridge nodes in a network.": true,
+        "Find the shortest path.": false
+    }
+}
