@@ -1,0 +1,98 @@
+import datetime
+import requests
+
+
+def get_game():
+    dic = {'namespace': [], 'offers': []}
+    url = "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions?locale=zh-CN&country=CN&allowCountries=CN,JP"
+    header = {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Mobile Safari/537.36",
+    }
+    res = requests.get(url=url, headers=header)
+    if res.status_code == 200:
+        print(res.json())
+        js = res.json()['data']['Catalog']['searchStore']['elements']
+        now = datetime.datetime.now() - datetime.timedelta(days=7)
+        for i in js:
+            # date = datetime.datetime.strptime(i['effectiveDate'][:-5], "%Y-%m-%dT%H:%M:%S")
+            # if date < now:
+            #     continue
+            # else:
+            dic['namespace'].append(i['items'][0]['namespace'])
+            dic['offers'].append(i['id'])
+
+            utc_date = datetime.datetime.strptime(i['effectiveDate'], "%Y-%m-%dT%H:%M:%S.%fZ")
+            local_date = utc_date + datetime.timedelta(days=7)
+            print(
+                '游戏名：' + i['title'] + '\n\t游戏描述：' + i['description'] + '\n\t游戏厂商：' + i['seller'][
+                    'name'] + '\n\t开始时间：' +
+                i['effectiveDate'] + '\n\t结束时间：' + str(local_date) + '\n\t游戏原价：' + i['price']['totalPrice']['fmtPrice'][
+                    'originalPrice'], '\n\t折后价：' + i['price']['totalPrice']['fmtPrice']['discountPrice'],
+                '\n\tnamespace：%s \toffers：%s' % (i['items'][0]['namespace'], i['id']))
+        return dic
+    else:
+        print('get请求错误：', res.text)
+        return dic
+
+
+if __name__ == '__main__':
+    get_game()
+
+"""
+游戏名：《Mortal Shell》
+	游戏描述：《Mortal Shell》是一款深度动作类角色扮演游戏。在这个支离破碎的世界中，你的精神和适应能力都将受到严峻的挑战。你的对手们毫无怜悯之心，你需要超强的感知力、精准度和直觉才能在他们手下生存。控制死去的勇士，探索隐藏的圣所，直面强大的敌人。
+	游戏厂商：Playstack
+	开始时间：2020-08-18T12:00:00.000Z
+	结束时间：2020-08-25 12:00:00
+	游戏原价：¥117.00 
+	折后价：¥117.00 
+	namespace：ff8c96d781824ba1ae62d18d207fc52e 	offers：10c62ba6044c4cbba8b50ad16dc58c4d
+游戏名：Them's Fightin' Herds
+	游戏描述：Them's Fightin' Herds
+	游戏厂商：Maximum Entertainment
+	开始时间：2022-12-19T16:00:00.000Z
+	结束时间：2022-12-26 16:00:00
+	游戏原价：¥60.00 
+	折后价：0 
+	namespace：a567c32599bf4d4fb609e424f3691b39 	offers：1f723b00df58467998c4984ca39915ad
+游戏名：Model Builder: Complete Edition
+	游戏描述：Join the latest trend in simulation games, bring out your creativity and make awesome-looking models with the base game and all available DLCs. Assemble, customize and display your creations, whether you’re a veteran or a novice. Get building, and get creative!
+	游戏厂商：Green Man Gaming Publishing
+	开始时间：2023-01-16T17:00:00.000Z
+	结束时间：2023-01-23 17:00:00
+	游戏原价：¥70.00 
+	折后价：¥70.00 
+	namespace：23499f64e5304139b514c3e674c5c0d6 	offers：d3e5b556640144bfa5de2d5d3b283d68
+游戏名：失落城堡: 遗迹守护者
+	游戏描述：“遗迹的守护者” DLC中包含了两张全新的地图等你来挑战！
+	游戏厂商：Another Indie Studio Limited
+	开始时间：2024-02-08T16:00:00.000Z
+	结束时间：2024-02-15 16:00:00
+	游戏原价：¥12.00 
+	折后价：¥12.00 
+	namespace：ab29925a0a9a49598adba45d108ceb3e 	offers：4a88d0dc64114b20b67339c74543f859
+游戏名：Cat Quest II
+	游戏描述：这是一款设定在猫狗世界的开放世界动作角色扮演游戏。在《Cat Quest 2》中，你可以独自游玩单人模式，也可以和一名好友一起游玩，并且你还能化身为猫咪和狗狗！在充满魔法的世界中展开任务、击败怪兽并收集战利品，踏上这段前所未有的猫咪冒险吧！
+	游戏厂商：Kepler Interactive
+	开始时间：2024-05-02T15:00:00.000Z
+	结束时间：2024-05-09 15:00:00
+	游戏原价：¥47.00 
+	折后价：¥47.00 
+	namespace：58004246d72f474a957ff5f57b9684ca 	offers：2a8398bbcb524c379ab21e31f0be5aeb
+游戏名：《LISA: Definitive Edition》
+	游戏描述：入手《LISA: Definitive Edition》，探索 Olathe，揭开背后隐藏的扭曲秘密。Definitive Edition 包括叙事驱动角色扮演原作《LISA: The Painful》及续作《LISA: The Joyful》。
+	游戏厂商：Serenity Forge
+	开始时间：2024-05-21T16:00:00.000Z
+	结束时间：2024-05-28 16:00:00
+	游戏原价：¥108.00 
+	折后价：¥108.00 
+	namespace：2052c58b9f64498386cbbbc85df90bbf 	offers：944b5b5d646d46bc92bc33edfe983d26
+游戏名：World of Warships — Anniversary Party Favor
+	游戏描述：Behold our token of appreciation for playing World of Warships at the Epic Games Store on this, our fourth anniversary on the platform!
+	游戏厂商：Wargaming Group Limited
+	开始时间：2025-03-13T15:00:00.000Z
+	结束时间：2025-03-20 15:00:00
+	游戏原价：¥217.29 
+	折后价：¥217.29 
+	namespace：84c76746bce94effb8e1047fabfd7eb7 	offers：ffb6b42a72d74d7fba7b9720fda5feee
+"""
