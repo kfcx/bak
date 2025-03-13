@@ -1,0 +1,149 @@
+Usage: __main__.py [--module] [--run] [options] main_module.py
+
+Options:
+  --version             打印程序版本号并退出。
+  -h, --help            打印这个帮助信息并退出。
+  --module            创建一个扩展模块可执行文件，而不是一个程序。默认关闭。
+  --standalone       在编译时使用独立模式。独立模式允许你把二进制文件发给没
+                             有安装python的计算机。它默认含有--recurse-all选项。你可
+                             以使用--python-flag=no_site摒弃site.py，这可以帮助你减少
+                             大量的代码。默认关闭。
+  --python-arch=PYTHON_ARCH
+                             选择使用的Python体系。"x86"或"x86_64"。默认是运行Nuitka
+                             时的体系。（通常是"x86_64"）。
+  --python-debug         是否使用debug版本。默认使用运行Nuitka时的状态通常是
+                                     非debug版本。
+  --python-flag=PYTHON_FLAGS
+                        使用的Python命令。默认使用运行Nuitka时的命令。当前支持：-S（别称nosite）static_hashes（不启用哈希随机话）no_warnings（不启用Python运行时警告）-O（不启用断言）。默认为无。
+  --python-for-scons=PYTHON_SCONS
+                        如果使用的是Python3.3或3.4，提供Scons路径。另外，Nuitka可以使用运行Nuitka的程序或在PATH环境变量里发现的scons变量，或者一个注册表里的Python安装程序。
+  --warn-implicit-exceptions
+                        确保内建的异常信息可以在编译时可见。
+  --warn-unusual-code   确保不寻常的代码警告在编译时可见。
+  --assume-yes-for-downloads
+                        允许Kuitka在必要时下载代码。比如，在Windows上依赖wakler。
+
+  控制包和模块：
+    --include-package=PACKAGE
+                        包含包。以Python命名方式给出，如：some_package.sub_package，Nuitka会包括其及以下的所有扩展包或二进制文件，并确保其可以被导入。默认为无。
+    --include-module=MODULE
+                        包含单一的模块。以Python命名方式给出，如：some_package.sub_package，Nuitka会包括其及以下的所有扩展包或二进制文件，并确保其可以被导入。默认为无。
+    --include-plugin-directory=MODULE/PACKAGE
+                        包含该目录下的所有内容，无论在主程序中是否会被用到。忽视其他递归选项。可以被给出多次。默认为无。
+    --include-plugin-files=PATTERN
+                        将符合模式的文件包含为插件。覆盖所有其他递归选项。可以指定多次。默认为空。
+
+  模块导入递归控制：
+    --follow-stdlib, --recurse-stdlib
+                        Also descend into imported modules from standard
+                        library. This will increase the compilation time by a
+                        lot. Defaults to off.
+    --nofollow-imports, --recurse-none
+                        When --recurse-none is used, do not descend into any
+                        imported modules at all, overrides all other recursion
+                        options. Defaults to off.
+    --follow-imports, --recurse-all
+                        When --recurse-all is used, attempt to descend into
+                        all imported modules. Defaults to off.
+    --follow-import-to=MODULE/PACKAGE, --recurse-to=MODULE/PACKAGE
+                        递归导入模块或包。可以指定多次。默认为空。
+    --nofollow-import-to=MODULE/PACKAGE, --recurse-not-to=MODULE/PACKAGE
+                        在任何情况下不递归导入这个包或模块。可以指定多次。默认为空。
+
+  编译后立即执行：
+    --run               立刻执行程序（或导入编译模块）。默认关毕。
+    --debugger, --gdb   执行内置的gdb去自动得到错误回溯。默认关闭。
+    --execute-with-pythonpath
+                        当执行生成的程序时不设置PYTHONPATH。当所有的模块都成功的导入时，你不应当再使用PYTHONPATH。
+  Dump options for internal tree:
+    --xml               将优化的结果储存为XML并且退出。
+
+  代码生成选项：
+    --full-compat       保证与CPython的绝对兼容。甚至不允许在表现上有任何偏差，比如就连回溯信息和异常信息都完全一样，即使这仅仅是文本上的不同。这个选项仅建议使用在测试时。
+    --file-reference-choice=FILE_REFERENCE_MODE
+                        设置__file__的值。如果是"runtime"（独立程序模式或模块模式），生成的程序，会在__file__中移除它们的位置。包含的模块会在当前的位置。这允许你在部署时加入数据文件。如果你想要加速，可以使用"original"值，会使用源文件路径。如果是"frozen"，一个"<frozen module_name>"会被使用。处于各种原因，__file__ 值常会以".py"为后缀。
+
+  输出选项：
+    -o FILENAME         指定可执行文件名称。对扩展模块模式和独立程序模式不可使用此选项。这可能会包含路径信息。默认使用程序名称。
+    --output-dir=DIRECTORY
+                        指定中间文件和最终文件的输出路径。默认是当前路径。
+    --remove-output     在最终文件完成后删除中间文件。默认关毕。
+    --no-pyi-file       生成扩展模块时，不创建".pyi"文件。用来检测隐式的导入。默认关闭。
+
+  调式功能：
+    --debug             Executing all self checks possible to find errors in
+                        Nuitka, do not use for production. Defaults to off.
+    --unstripped        Keep debug info in the resulting object file for
+                        better debugger interaction. Defaults to off.
+    --profile           Enable vmprof based profiling of time spent. Not
+                        working currently. Defaults to off.
+    --graph             Create graph of optimization process. Defaults to off.
+    --trace-execution   Traced execution output, output the line of code
+                        before executing it. Defaults to off.
+    --recompile-c-only  This is not incremental compilation, but for Nuitka
+                        development only. Takes existing files and simply
+                        compile them as C again. Allows compiling edited C
+                        files for quick debugging changes to the generated
+                        source, e.g. to see if code is passed by, values
+                        output, etc, Defaults to off. Depends on compiling
+                        Python source to determine which files it should look
+                        at.
+    --generate-c-only   Generate only C source code, and do not compile it to
+                        binary or module. This is for debugging and code
+                        coverage analysis that doesn't waste CPU. Defaults to
+                        off. Do not think you can use this directly.
+    --experimental=EXPERIMENTAL
+                        Use features declared as 'experimental'. May have no
+                        effect if no experimental features are present in the
+                        code. Uses secret tags (check source) per experimented
+                        feature.
+    --disable-dll-dependency-cache
+                        Disable the dependency walker cache. Will result in
+                        much longer times to create the distribution folder,
+                        but might be used in case the cache is suspect to
+                        cause errors.
+    --force-dll-dependency-cache-update
+                        For an update of the dependency walker cache. Will
+                        result in much longer times to create the distribution
+                        folder, but might be used in case the cache is suspect
+                        to cause errors or known to need an update.
+
+  C 编译器选项：
+    --clang             强制使用clang。在Windows上需要有可用的Visual Studio。默认关闭。
+    --mingw64           强制使用MinGW64（Windows）。默认关闭。
+    --msvc=MSVC         强制使用指定版本的MSVC。合法的值如14.0。默认使用最近的版本。
+    -j N, --jobs=N      指定允许的C编译器并行进程数。默认为CPU数量。
+    --lto               Use link time optimizations if available and usable
+                        (gcc 4.6 and higher). Defaults to off.
+
+  回溯功能：
+    --show-scons        在非静默模式运行Scons，显示执行命令。默认关闭。
+    --show-progress     显示过程信息和状态。默认关闭。
+    --show-memory       显示内存信息和状态。默认关闭。
+    --show-modules      显示包含模块的摘要。默认关闭。
+    --verbose           输出详细信息，如各种配置信息。会有很多。默认关闭。
+
+  Windows选项：
+    --windows-dependency-tool=DEPENDENCY_TOOL
+                        当编译Windows程序时，使用独立的工具。默认是depends.exe，还允许使用的值有：'pefile'。
+    --windows-disable-console
+                        编译Windows程序时，隐藏控制台窗口。默认关闭。
+    --windows-icon=ICON_PATH
+                        添加程序图标。
+
+  插件控制：
+    --plugin-enable=PLUGINS_ENABLED, --enable-plugin=PLUGINS_ENABLED
+                        启的插件。必须是plug-in格式名称。使用--plugin-list获取列表并退出。默认为空。
+    --plugin-disable=PLUGINS_DISABLED, --disable-plugin=PLUGINS_DISABLED
+                        关闭插件。必须是plug-in格式名称。使用--plugin-list获取列表并退出。默认为空。
+    --plugin-no-detection
+                        插件可以检测出自己是否被使用，你可以通过--plugin-disable=警告的插件来关闭警告，也可以用这种方法完全关闭警告机制，这样会加快编译速度，只要你自己知道你使用了什么插件。默认关闭。
+    --plugin-list       打印所有可用的插件并退出。默认关闭。
+    --user-plugin=USER_PLUGINS
+                        用户插件的文件名。可以指定多次。默认为空。
+
+错误，需要python模块或主程序参数。
+
+翻译：难赋
+
+文档有什么问题可以私聊我（Q：1838209902），不常看群。
