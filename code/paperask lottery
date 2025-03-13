@@ -1,0 +1,27 @@
+import requests
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
+    'Cookie': 'PAPERYY_LOGIN_TOKEN=x'
+}
+
+
+for i in [18, 19, 21, 22, 26, 27, 34, 35]:
+    url = f'https://www.paperask.com/hd/getCode/{i}'  # 获取活动
+    r = requests.get(url=url, headers=headers)
+    if r.json()['code'] == -1:
+        continue
+    url = 'https://www.paperask.com/hd/activity/points?tk=x&promote=0'
+    data = {
+        'dictId': {i},
+        'code': r.json()['data']
+    }
+    r = requests.post(url=url, headers=headers, data=data)
+    print(r.json())
+
+for i in range(120):
+    url = 'https://www.paperask.com/xcx/api/v2/activity-prize/lottery-prize?tk=x&promote=0'
+    r = requests.get(url=url, headers=headers)
+    if r.json()['code'] == -1:
+        break
+    print(r.json()['data'])
